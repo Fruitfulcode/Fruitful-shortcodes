@@ -8,7 +8,7 @@
                 title : 'Add Tabs',  
                 image : url+'/tabs.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[tabs id="ffs-tabbed-0" type="default, vertical, accordion" width="100%, auto" fit="true, false"] <br /> [tab title="Title 1"] Tab 1 content place [/tab] <br /> [tab title="Title 2"] Tab 2 content place [/tab] <br /> [tab title="Title 3"] Tab 3 content place [/tab] <br /> [/tabs]');  
+                     ed.selection.setContent('[ffs_tabs type="default, vertical, accordion" width="100%, auto" fit="true, false"] <br /> [ffs_tab title="Title 1"] Tab 1 content place [/ffs_tab] <br /> [ffs_tab title="Title 2"] Tab 2 content place [/ffs_tab] <br /> [ffs_tab title="Title 3"] Tab 3 content place [/ffs_tab] <br /> [/ffs_tabs]');  
 											 
                 }  
             });  
@@ -24,13 +24,13 @@
 /*	ffs TinyMCE "Description Box" Button
 /*-----------------------------------------------------------------------------------*/
 (function() {  
-    tinymce.create('tinymce.plugins.ffs_description_box', {  
+    tinymce.create('tinymce.plugins.ffs_dbox', {  
         init : function(ed, url) {  
-            ed.addButton('ffs_description_box', {  
+            ed.addButton('ffs_dbox', {  
                 title : 'Add Description Box',  
                 image : url+'/retinaicon.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[description_box id="desc-box-0" style=" all css style "] Hello, world! This is Fruitful Shortcodes plugin. [/description_box]');  
+                     ed.selection.setContent('[ffs_dbox style=" all css style "] Hello, world! This is Fruitful Shortcodes plugin. [/ffs_dbox]');  
 											 
                 }  
             });  
@@ -39,7 +39,7 @@
             return null;  
         },  
     });  
-    tinymce.PluginManager.add('ffs_description_box', tinymce.plugins.ffs_description_box);  
+    tinymce.PluginManager.add('ffs_dbox', tinymce.plugins.ffs_dbox);  
 })();
 
 
@@ -53,7 +53,7 @@
                 title : 'Add 1/2 Columns',  
                 image : url+'/one_half.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[info_box_row id="row-0"] <br /> [info_box column="ffs-two-one" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-two-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/info_box] <br /> [/info_box_row]');  
+                     ed.selection.setContent('[ffs_ibox_row] <br /> [ffs_ibox column="ffs-two-one" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-two-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [/ffs_ibox_row]');  
                 }  
             });  
         },  
@@ -69,7 +69,7 @@
                 title : 'Add 1/3 Columns',  
                 image : url+'/one_third.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[info_box_row id="row-1"] <br /> [info_box column="ffs-three-one" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-three-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-three-one" title="Title 3" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/info_box] <br /> [/info_box_row]');  
+                     ed.selection.setContent('[ffs_ibox_row] <br /> [ffs_ibox column="ffs-three-one" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-three-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-three-one" title="Title 3" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [/ffs_ibox_row][ffs_ibox_row] <br /> [ffs_ibox column="ffs-three-one" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-three-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-three-one" title="Title 3" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [/ffs_ibox_row]');  
 											 
                 }  
             });  
@@ -86,7 +86,7 @@
                 title : 'Add 2/3 Columns',  
                 image : url+'/two_third.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[info_box_row id="row-2"] <br /> [info_box column="ffs-three-two" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-three-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/info_box] <br /> [/info_box_row]');  
+                     ed.selection.setContent('[ffs_ibox_row] <br /> [ffs_ibox column="ffs-three-two" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-three-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [/ffs_ibox_row]');  
                 }  
             });  
         },  
@@ -102,7 +102,7 @@
                 title : 'Add 1/4 Columns',  
                 image : url+'/one_fourth.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[info_box_row id="row-3"] <br /> [info_box column="ffs-four-one" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-four-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-four-one" title="Title 3" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-four-one" title="Title 4" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/info_box] <br /> [/info_box_row]');  
+                     ed.selection.setContent('[ffs_ibox_row] <br /> [ffs_ibox column="ffs-four-one" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-four-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-four-one" title="Title 3" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-four-one" title="Title 4" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [/ffs_ibox_row]');  
                 }  
             });  
         },  
@@ -118,7 +118,7 @@
                 title : 'Add 3/4 Columns',  
                 image : url+'/three_fourth.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[info_box_row id="row-3"] <br /> [info_box column="ffs-four-three" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-four-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/info_box] <br /> [/info_box_row]');  
+                     ed.selection.setContent('[ffs_ibox_row] <br /> [ffs_ibox column="ffs-four-three" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-four-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [/ffs_ibox_row]');  
                 }  
             });  
         },  
@@ -134,7 +134,7 @@
                 title : 'Add 1/5 Columns',  
                 image : url+'/one_fifth.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[info_box_row id="row-3"] <br /> [info_box column="ffs-five-one" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-five-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-five-one" title="Title 3" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-five-one" title="Title 4" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/info_box] <br /> [info_box column="ffs-five-one" title="Title 5" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/info_box] <br /> [/info_box_row]');  
+                     ed.selection.setContent('[ffs_ibox_row] <br /> [ffs_ibox column="ffs-five-one" title="Title 1" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-five-one" title="Title 2" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-five-one" title="Title 3" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-five-one" title="Title 4" link="" styletitle="" styletext="" styleicon="" image="" icon=""]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [ffs_ibox column="ffs-five-one" title="Title 5" link="" styletitle="" styletext="" styleicon="" image="" icon="" last="true"]Lorem ipsum dolor sit amet.[/ffs_ibox] <br /> [/ffs_ibox_row]');  
                 }  
             });  
         },  
@@ -156,7 +156,7 @@
                 title : 'Add Separator',  
                 image : url+'/gap.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[sep id="sep-0" height="10" style="border-bottom:1px solid #ebebeb;"]');  
+                     ed.selection.setContent('[ffs_sep height="10" style="border-bottom:1px solid #ebebeb;"]');  
 											 
                 }  
             });  
@@ -168,3 +168,70 @@
     tinymce.PluginManager.add('ffs_sep', tinymce.plugins.ffs_sep);  
 })();
 
+
+/*-----------------------------------------------------------------------------------*/
+/*	ffs TinyMCE "Alerts" Button
+/*-----------------------------------------------------------------------------------*/
+
+(function() {  
+    tinymce.create('tinymce.plugins.ffs_alerts', {  
+        init : function(ed, url) {  
+            ed.addButton('ffs_alerts', {  
+                title : 'Add Alert',  
+                image : url+'/alert.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[ffs_alert type="alert-block, alert-error, alert-success, alert-info"]Oh snap! Change a few things up and try submitting again.[/ffs_alert]');  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('ffs_alerts', tinymce.plugins.ffs_alerts);  
+})();
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	ffs TinyMCE "Progress bar" Button
+/*-----------------------------------------------------------------------------------*/
+
+(function() {  
+    tinymce.create('tinymce.plugins.ffs_pbar', {  
+        init : function(ed, url) {  
+            ed.addButton('ffs_pbar', {  
+                title :  'Add Progress Bar',  
+                image : url+'/alert.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[ffs_pbar][ffs_bar type="bar-success" width="60%"][/ffs_bar][/ffs_pbar]');  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('ffs_pbar', tinymce.plugins.ffs_pbar);  
+})();
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	ffs TinyMCE "Bootstrap Button" Button
+/*-----------------------------------------------------------------------------------*/
+(function() {  
+    tinymce.create('tinymce.plugins.ffs_btn', {  
+        init : function(ed, url) {  
+            ed.addButton('ffs_btn', {  
+                title :  'Add Button',  
+                image : url+'/button.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[ffs_btn]Name "button"[/ffs_btn]');  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('ffs_btn', tinymce.plugins.ffs_btn);  
+})();

@@ -87,7 +87,7 @@
 }
 
 .info-box-row .info-box .infobox-title {
-	margin:0 0 20px 0;
+    margin: 0 0 5px;
     font-weight:300
 }
 
@@ -102,18 +102,59 @@
     min-width:51px;
 }
 
-.ffs-icon-container {
+.info-box-row .info-box .ffs-icon-container {
 	text-align: center;
 	margin: 0 auto;
 	display: block;
 	width: auto;
 }
 
-.ffs-icon-container i {
+.info-box-row .info-box .ffs-icon-container i {
 	text-align: center;
 	font-size: 26px;
 	padding: 10px;
 	margin: 5px 0;
+}
+
+.info-box.center .ffs-icon-box,
+.info-box.center .ffs-content-box {
+	width:100%;
+}
+
+.info-box.left .ffs-icon-box, 
+.info-box.right .ffs-icon-box {
+	width:20%;
+	display:block;
+}
+
+.info-box.left .ffs-content-box, 
+.info-box.right .ffs-content-box {
+	width:80%;
+	display:block;
+}
+
+.info-box.left .ffs-icon-box,
+.info-box.right .ffs-content-box {
+	float:left;
+}
+
+.info-box.right .ffs-icon-box,
+.info-box.left .ffs-content-box {
+	float:right;
+}
+
+.btn .ffs-icon-container {
+	font-size:inherit;
+}
+
+.btn .ffs-icon-container.left {
+	padding:0 8px 0 0;
+	text-align:left;
+}
+
+.btn .ffs-icon-container.right {
+	padding:0 0 0 8px;
+	text-align:right;
 }
 
 
@@ -170,7 +211,7 @@
 
 /*Separator*/
 .ffs-sep {
-	width:100%;
 	display:block;
+	margin: 0 0 30px;
 }
 
