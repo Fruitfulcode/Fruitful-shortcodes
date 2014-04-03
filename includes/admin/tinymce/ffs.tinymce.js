@@ -27,8 +27,8 @@
     tinymce.create('tinymce.plugins.ffs_dbox', {  
         init : function(ed, url) {  
             ed.addButton('ffs_dbox', {  
-                title : 'Add Description Box',  
-                image : url+'/retinaicon.png',  
+                title : 'Add promo text',  
+                image : url+'/promotext.png',  
                 onclick : function() {  
                      ed.selection.setContent('[ffs_dbox style=" all css style "] Hello, world! This is Fruitful Shortcodes plugin. [/ffs_dbox]');  
 											 
@@ -154,7 +154,7 @@
         init : function(ed, url) {  
             ed.addButton('ffs_sep', {  
                 title : 'Add Separator',  
-                image : url+'/gap.png',  
+                image : url+'/separator.png',  
                 onclick : function() {  
                      ed.selection.setContent('[ffs_sep height="10" style="border-bottom:1px solid #ebebeb;"]');  
 											 
@@ -201,7 +201,7 @@
         init : function(ed, url) {  
             ed.addButton('ffs_pbar', {  
                 title :  'Add Progress Bar',  
-                image : url+'/alert.png',  
+                image : url+'/progressbar.png',  
                 onclick : function() {  
                      ed.selection.setContent('[ffs_pbar][ffs_bar type="bar-success" width="60%"][/ffs_bar][/ffs_pbar]');  
                 }  
