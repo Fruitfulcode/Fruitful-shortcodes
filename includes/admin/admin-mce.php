@@ -27,7 +27,9 @@
 	
 	function ffs_register_tinymce_elements( $buttons )  {
 		array_push(	$buttons, 
-					'ffs_tabs', 
+     				'ffs_horizontal_tabs',
+     				'ffs_vertical_tabs', 
+     				'ffs_accordion_tabs', 
 					'ffs_dbox', 
 					'ffs_one_half_column', 
 					'ffs_one_third_column', 
@@ -44,7 +46,9 @@
 	}
 
 	function ffs_add_tinymce_elements( $plugin_array )  {
-		$plugin_array['ffs_tabs'] 			   = plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
+		$plugin_array['ffs_horizontal_tabs']   = plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
+		$plugin_array['ffs_vertical_tabs'] 	   = plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
+		$plugin_array['ffs_accordion_tabs']    = plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
 		$plugin_array['ffs_dbox']   		   = plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
 		$plugin_array['ffs_one_half_column']   = plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
 		$plugin_array['ffs_one_third_column']  = plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';

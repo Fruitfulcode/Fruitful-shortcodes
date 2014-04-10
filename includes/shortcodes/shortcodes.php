@@ -28,9 +28,9 @@ function ffs_description_box ($atts, $content = null) {
 	$id = 'desc-box-' . rand( 1, 100 );
 	
 	if (wp_is_mobile()) {
-		$style = ' font-size: 20px; text-transform : uppercase; text-align: center; font-weight: 300; ';
+		$style = ' font-size: 20px; text-transform : uppercase; text-align: center; font-weight: 300; line-height: 1.2;';
 	} else {
-		$style = ' font-size: 40px; text-transform : uppercase; text-align: center; font-weight: 300; ';
+		$style = ' font-size: 40px; text-transform : uppercase; text-align: center; font-weight: 300; line-height: 1.2;';
 	}
 	
 	if (!empty($atts['id']))    { $id 	 = sanitize_html_class($atts['id']); }
@@ -91,7 +91,7 @@ function ffs_info_box ($atts, $content = null) {
 	 $icon_position = 'center';
 	 $icon		 = 'fa-check-square-o';
 	 $styletext  = 'font-size:13px; ';
-	 $styletitle = 'font-size:20px; text-transform: uppercase; ';
+	 $styletitle = 'font-size:20px; text-transform: uppercase;';
 	 $styleicon	 = 'background-color:#000; color:#fff; border-radius:50%; ';
 	 $last       =  false;
 
@@ -272,7 +272,7 @@ function ffs_pbar_shortcode ($atts, $content = null) {
      ), $atts, 'fss_alert');
 	
 	$id = 'ffs-pbar-' . rand( 1, 100 );
-	$type	= '';
+	$type = $class = '';
 	$active = false;
 	$stripped = false;
 	
