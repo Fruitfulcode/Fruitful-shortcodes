@@ -118,7 +118,7 @@ function ffs_info_box ($atts, $content = null) {
 		$styletitle .= $styletitle . 'text-align:center; ';
 	 }
 	 
-	 $out .= '<div id="'.$id.'" class="'. $column .' info-box ' . $icon_position . ' ' . $last . '" >';
+	 $out .= '<div id="'.$id.'" class="'. $column .' ffs-info-box ' . $icon_position . ' ' . $last . '" >';
 		if (($image != '') || ($icon != '')) {
 			$out .= '<div class="ffs-icon-box">';
 			if ($image != '') {  
