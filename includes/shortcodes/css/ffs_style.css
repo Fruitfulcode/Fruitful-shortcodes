@@ -162,6 +162,11 @@
 /* Description box */
 /*-------------------------------------------------------------------------------------------*/
 
+.ffs_description_box {
+	position:relative;
+	z-index:0;
+}
+
 .ffs_description {
     float:left;
     width:100%;
