@@ -36,10 +36,12 @@ function ffs_description_box ($atts, $content = null) {
 	if (!empty($atts['id']))    { $id 	 = sanitize_html_class($atts['id']); }
 	if (!empty($atts['style'])) { $style = esc_html($atts['style']); }
    
-    $out .= '<div class="ffs_description" id="'. $id .'">';
-	if (!empty($content)) { $out .=	'<div class="text" style="'. $style .'">' . $content . '</div>'; } else 
+	$out .= '<div class="ffs_description_box">';   
+		$out .= '<div class="ffs_description" id="'. $id .'">';
+			if (!empty($content)) { $out .=	'<div class="text" style="'. $style .'">' . $content . '</div>'; } else 
 						  { $out .= '<div class="text" style="'. $style .'">No text Description</div>'; }			
-	$out .= '</div>';
+		$out .= '</div>';
+	$out .= '</div>';	
 	$out .= '<div class="clearfix"></div>';
 	
     return $out;
