@@ -2,12 +2,12 @@
 	margin:10px 0 20px 0;
 }
 
-ul.resp-tabs-list, p {
+.ffs-tabbed-nav ul.resp-tabs-list, p {
     margin: 0px;
     padding: 0px;
 }
 
-.resp-tabs-list li {
+.ffs-tabbed-nav .resp-tabs-list li {
     font-weight: 600;
     font-size: 13px;
     display: inline-block;
