@@ -2,9 +2,9 @@
 /*
 	Plugin Name: Fruitful Shortcodes
 	Plugin URI: http://wordpress.org/plugins/fruitful-shortcodees/
-	Description: 
-	Version: 1.0.0
-	Author: Yakovlev A.S.
+	Description: Add additional content shortcodes: horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button
+	Version: 1.0
+	Author: fruitfulcode
 	Author URI: http://fruitfulcode.com
 	License: GPL2
 */
