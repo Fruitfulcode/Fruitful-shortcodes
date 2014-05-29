@@ -1,8 +1,8 @@
 <?php
 /*
 	Plugin Name: Fruitful Shortcodes
-	Plugin URI: http://wordpress.org/plugins/fruitful-shortcodees/
-	Description: Add additional content shortcodes: horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button
+	Plugin URI: http://plugins.fruitfulcode.com/shortcodes/
+	Description: Add additional content shortcodes: horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button, 
 	Version: 1.0
 	Author: fruitfulcode
 	Author URI: http://fruitfulcode.com
