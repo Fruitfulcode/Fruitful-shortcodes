@@ -18,7 +18,7 @@ class ffsSettingsPage   {
     }
 
     public function ffsCreateOptionsPage() {
-        $this->ffs_options = get_option( 'ffs_options_plugin' );
+        $this->fruitful_options = get_option( 'fruitful_options_plugin' );
     ?>
         <div class="wrap">
             <?php screen_icon(); ?>
@@ -38,8 +38,8 @@ class ffsSettingsPage   {
     public function ffsPageInit() {        
         register_setting(
             'ffsAdminGroup', 		// Option group
-            'ffs_options_plugin', 	// Option name
-            array( $this, 'ffs_sanitize' ) // Sanitize
+            'fruitful_options_plugin', 	// Option name
+            array( $this, 'fruitful_sanitize' ) // Sanitize
         );
 
         add_settings_section(
@@ -50,9 +50,9 @@ class ffsSettingsPage   {
         );  
 
         add_settings_field(
-            'ffs_post_types', 	// ID
+            'fruitful_post_types', 	// ID
             'Display On', 		// Title 
-            array( $this, 'ffs_get_post_types_call' ), // Callback
+            array( $this, 'fruitful_get_post_types_call' ), // Callback
             'ffsAdminSettings', 	// Page
             'ffsSettingSection' 	// Section           
         );      
@@ -64,27 +64,27 @@ class ffsSettingsPage   {
      *
      * @param array $input Contains all settings fields as array keys
      */
-    public function ffs_sanitize( $elements ) {
+    public function fruitful_sanitize( $elements ) {
 		
         $new_elements = array();
-        if( isset( $elements['ffs_post_types'] ) ) $new_elements['ffs_post_types'] = $elements['ffs_post_types'];
+        if( isset( $elements['fruitful_post_types'] ) ) $new_elements['fruitful_post_types'] = $elements['fruitful_post_types'];
 
         return $new_elements;
     }
 
     
-    protected function ffs_getPostTypes() {
+    protected function fruitful_getPostTypes() {
         return get_post_types(array('public' => true));
     }
 	
-    public function ffs_get_post_types_call() {
-        $pst_arr = ($pst_arr = $this->ffs_options['ffs_post_types']) ? ($pst_arr) : array('page', 'post');
+    public function fruitful_get_post_types_call() {
+        $pst_arr = ($pst_arr = $this->fruitful_options['fruitful_post_types']) ? ($pst_arr) : array('page', 'post');
 		
-        foreach ($this->ffs_getPostTypes() as $post_type) {
+        foreach ($this->fruitful_getPostTypes() as $post_type) {
                  $checked = (in_array($post_type, $pst_arr)) ? ' checked="checked"' : '';
                 ?>
                 <label>
-                    <input type="checkbox"<?php echo $checked; ?> value="<?php echo $post_type; ?>" id="ffs_post_types_<?php echo $post_type; ?>" name="ffs_options_plugin[ffs_post_types][]" />
+                    <input type="checkbox"<?php echo $checked; ?> value="<?php echo $post_type; ?>" id="fruitful_post_types_<?php echo $post_type; ?>" name="fruitful_options_plugin[fruitful_post_types][]" />
                     <?php echo $post_type; ?>
                 </label><br>
                 <?php }

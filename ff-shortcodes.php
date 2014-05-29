@@ -26,53 +26,53 @@
 
 class ffs {
 	function __construct() {
-		add_action( 'plugins_loaded', array( &$this, 'ffs_constants'), 	1);
-		add_action( 'plugins_loaded', array( &$this, 'ffs_lang'),		2);
-		add_action( 'plugins_loaded', array( &$this, 'ffs_includes'), 	3);
-		add_action( 'plugins_loaded', array( &$this, 'ffs_admin_init'),	4);
+		add_action( 'plugins_loaded', array( &$this, 'fruitful_shortcode_constants'), 	1);
+		add_action( 'plugins_loaded', array( &$this, 'fruitful_shortcode_lang'),		2);
+		add_action( 'plugins_loaded', array( &$this, 'fruitful_shortcode_includes'), 	3);
+		add_action( 'plugins_loaded', array( &$this, 'fruitful_shortcode_admin_init'),	4);
 
 		
-		register_activation_hook  ( __FILE__, array( &$this,  'ffs_activation' ));
-		register_deactivation_hook( __FILE__, array( &$this,'ffs_deactivation' ));
+		register_activation_hook  ( __FILE__, array( &$this,  'fruitful_shortcode_activation' ));
+		register_deactivation_hook( __FILE__, array( &$this,'fruitful_shortcode_deactivation' ));
 		
-		add_action('init', array( &$this,'ffs_init_shortcodes'));
+		add_action('init', array( &$this,'fruitful_init_shortcodes'));
 	}
 		
-	function ffs_constants() {
-		define( 'FFS_VERSION', '1.0.0' );
-		define( 'FFS_WP_VERSION',   get_bloginfo( 'version' ));
-		define( 'FFS_DIR', 	    	trailingslashit( plugin_dir_path( __FILE__ ) ) );
-		define( 'FFS_URI', 			trailingslashit( plugin_dir_url( __FILE__ ) ) );
-		define( 'FFS_INCLUDES', 	FFS_DIR . trailingslashit( 'includes' ) );
-		define( 'FFS_LOAD',     	FFS_DIR . trailingslashit( 'load' ) );
+	function fruitful_shortcode_constants() {
+		define( 'FRUITFUL_SHORTCODE_VERSION', '1.0.0' );
+		define( 'FRUITFUL_SHORTCODE_WP_VERSION',   get_bloginfo( 'version' ));
+		define( 'FRUITFUL_SHORTCODE_DIR', 	    trailingslashit( plugin_dir_path( __FILE__ ) ) );
+		define( 'FRUITFUL_SHORTCODE_URI', 		trailingslashit( plugin_dir_url( __FILE__ ) ) );
+		define( 'FRUITFUL_SHORTCODE_INCLUDES', 	FRUITFUL_SHORTCODE_DIR . trailingslashit( 'includes' ) );
+		define( 'FRUITFUL_SHORTCODE_LOAD',     	FRUITFUL_SHORTCODE_DIR . trailingslashit( 'load' ) );
 	}
 		
-	function ffs_lang() {
+	function fruitful_shortcode_lang() {
 		//load_plugin_textdomain( 'ff_shortcodes', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );		
 	}	
 		
-	function ffs_includes() {
-		//require_once( FFS_INCLUDES . 'functions.php' ); 
+	function fruitful_shortcode_includes() {
+		//require_once( fruitful_INCLUDES . 'functions.php' ); 
 	}
 		
-	function ffs_admin_init() {
+	function fruitful_shortcode_admin_init() {
 		if ( is_admin() ) {
-			require_once( FFS_INCLUDES . '/admin/admin-options.php' );
-			require_once( FFS_INCLUDES . '/admin/admin-mce.php' );
+			require_once( FRUITFUL_SHORTCODE_INCLUDES . '/admin/admin-options.php' );
+			require_once( FRUITFUL_SHORTCODE_INCLUDES . '/admin/admin-mce.php' );
 		}	
 	}
 		
-	function ffs_activation() {
+	function fruitful_shortcode_activation() {
 		/*Nor Enough*/
 	}
 		
-	function ffs_deactivation() {
+	function fruitful_shortcode_deactivation() {
 		delete_option('ff_shortcodes_options');
 		delete_option('ff_shortcodes_db_version');
 	}
 	
-	function ffs_init_shortcodes() {
-		require_once FFS_INCLUDES . '/shortcodes/shortcodes.php';
+	function fruitful_init_shortcodes() {
+		require_once FRUITFUL_SHORTCODE_INCLUDES . '/shortcodes/shortcodes.php';
 	}
 	
 }

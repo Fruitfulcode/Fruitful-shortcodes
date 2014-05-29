@@ -2,28 +2,28 @@
 /*Description Box*/
 	if ( ! defined( 'ABSPATH' ) ) exit;
 	
-	function ffs_init_shortcodes_style() {
-		wp_enqueue_style( 'easyResponsiveTabs', FFS_URI . 'includes/shortcodes/js/tabs/easy-responsive-tabs.css');
-		wp_enqueue_style( 'ffs_style',  		FFS_URI . 'includes/shortcodes/css/ffs_style.css');
-		wp_enqueue_style( 'font-awesome',		FFS_URI . 'includes/shortcodes/css/font-awesome.min.css');
-		wp_enqueue_style( 'boostrap',			FFS_URI . 'includes/shortcodes/bootstrap/css/bootstrap.min.css');
+	function fruitful_init_shortcodes_style() {
+		wp_enqueue_style( 'easyResponsiveTabs',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/tabs/easy-responsive-tabs.css');
+		wp_enqueue_style( 'fruitful_shortcode_style',  	FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/css/fruitful_shortcode_style.css');
+		wp_enqueue_style( 'font-awesome',				FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/css/font-awesome.min.css');
+		wp_enqueue_style( 'boostrap',					FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/css/bootstrap.min.css');
 	}
 	
-	function ffs_init_shortcodes_script() {
-		wp_enqueue_script('easyResponsiveTabs', FFS_URI . 'includes/shortcodes/js/tabs/easyResponsiveTabs.js', array( 'jquery' ), '20142803', true );
-		wp_enqueue_script('easyResponsiveTabs', FFS_URI . 'includes/shortcodes/js/ffs_script.js', array( 'jquery' ), '20142803', true );
-		wp_enqueue_script('boostrap',			FFS_URI . 'includes/shortcodes/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '20142803', true );
+	function fruitful_init_shortcodes_script() {
+		wp_enqueue_script('easyResponsiveTabs', FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/tabs/easyResponsiveTabs.js', array( 'jquery' ), '20142803', true );
+		wp_enqueue_script('easyResponsiveTabs', FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/fruitful_script.js', array( 'jquery' ), '20142803', true );
+		wp_enqueue_script('boostrap',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '20142803', true );
 	}
 	
-	add_action( 'wp_enqueue_scripts', 'ffs_init_shortcodes_style',  99 );
-	add_action( 'wp_enqueue_scripts', 'ffs_init_shortcodes_script', 100 );	
+	add_action( 'wp_enqueue_scripts', 'fruitful_init_shortcodes_style',  99 );
+	add_action( 'wp_enqueue_scripts', 'fruitful_init_shortcodes_script', 100 );	
 	
-function ffs_description_box ($atts, $content = null) {
+function fruitful_description_box ($atts, $content = null) {
 	$out = '';
 	shortcode_atts(array(
 		  'id'		=> '',
 		  'style' 	=> ''
-     ), $atts, 'ffs_dbox');
+     ), $atts, 'fruitful_dbox');
 	
 	$id = 'desc-box-' . rand( 1, 100 );
 	
@@ -36,8 +36,8 @@ function ffs_description_box ($atts, $content = null) {
 	if (!empty($atts['id']))    { $id 	 = sanitize_html_class($atts['id']); }
 	if (!empty($atts['style'])) { $style = esc_html($atts['style']); }
    
-	$out .= '<div class="ffs_description_box">';   
-		$out .= '<div class="ffs_description" id="'. $id .'">';
+	$out .= '<div class="fruitful_description_box">';   
+		$out .= '<div class="fruitful_description" id="'. $id .'">';
 			if (!empty($content)) { $out .=	'<div class="text" style="'. $style .'">' . $content . '</div>'; } else 
 						  { $out .= '<div class="text" style="'. $style .'">No text Description</div>'; }			
 		$out .= '</div>';
@@ -46,66 +46,57 @@ function ffs_description_box ($atts, $content = null) {
 	
     return $out;
 }
-add_shortcode ("ffs_dbox", "ffs_description_box");
+add_shortcode ("fruitful_dbox", "fruitful_description_box");
 
 
-function ffs_ibox_row_shortcode ($atts, $content = null) {
+function fruitful_ibox_row_shortcode ($atts, $content = null) {
 	 $out = ""; 
 	 shortcode_atts(array(
 		  'id'	=> '' 
-     ), $atts, 'ffs_ibox_row');
+     ), $atts, 'fruitful_ibox_row');
 	 
 	 $id = 'info-box-row-' . rand( 1, 100 );
 	 
 	 if (isset($atts['id'])) { $id = sanitize_html_class($atts['id']); }
 	 
 	 $out .= '<div class="info-box-row clearfix" id="'. $id .'">';
-		$out .=	ffs_esc_content_pbr(do_shortcode($content));
+		$out .=	fruitful_esc_content_pbr(do_shortcode($content));
 	 $out .= '</div>';
 	 $out .= '<div class="clearfix"></div>';
 	 
 	 return $out;
 	 
 }
-add_shortcode('ffs_ibox_row', 'ffs_ibox_row_shortcode');
+add_shortcode('fruitful_ibox_row', 'fruitful_ibox_row_shortcode');
 
 /*Add information box into content block*/
-function ffs_info_box ($atts, $content = null) {
-	$out = '';
-	
-	shortcode_atts(array(
+function fruitful_info_box ($atts, $content = null) {
+	$image = $title = $column = $styletext = $out = $link = '';
+	$last =  false;
+	extract(shortcode_atts(array(
 		  'column'			=> '',
 		  'title'	   		=> '', 
-		  'link'			=> '',
+		  'link'			=> '#',
 		  'image' 			=> '', 
-		  'icon'			=> '',
-		  'icon_position'	=> '',
-		  'styletext'	  	=> '',
-		  'styletitle'		=> '',
-		  'styleicon'		=> '',
+		  'icon'			=> 'fa-check-square-o',
+		  'icon_position'	=> 'center',
+		  'styletext'	  	=> 'font-size:13px; ',
+		  'styletitle'		=> 'font-size:20px; text-transform: uppercase; ',
+		  'styleicon'		=> 'background-color:#000; color:#fff; border-radius:50%; ',
 		  'last'			=> ''
-     ), $atts, 'ffs_info_box');
+     ), $atts));
 	
-	 $id 		 = 'info-box-' . rand( 1, 100 );
-	 $image   	 = ''; 
-	 $title		 = '';
-	 $column 	 = '';
-	 $icon_position = 'center';
-	 $icon		 = 'fa-check-square-o';
-	 $styletext  = 'font-size:13px; ';
-	 $styletitle = 'font-size:20px; text-transform: uppercase;';
-	 $styleicon	 = 'background-color:#000; color:#fff; border-radius:50%; ';
-	 $last       =  false;
-
-	 if (isset($atts['column'])) 		{ $column 		 = sanitize_html_class($atts['column']); } 
-	 if (isset($atts['title'])) 		{ $title 		 = esc_attr($atts['title']); }
-	 if (isset($atts['image'])) 		{ $image 		 = esc_url ($atts['image']); }
-	 if (isset($atts['styletext'])) 	{ $styletext  	 = esc_html($atts['styletext']); }
-	 if (isset($atts['styletitle'])) 	{ $styletitle 	 = esc_html($atts['styletitle']); }
-	 if (isset($atts['last'])) 			{ $last 		 = 'last'; } else { $last = ''; }
-	 if (isset($atts['styleicon'])) 	{ $styleicon 	 = 'styleicon'; } 
-	 if (isset($atts['icon'])) 			{ $icon 		 = 'icon'; } 
-	 if (isset($atts['icon_position'])) { $icon_position = sanitize_html_class($atts['icon_position']);} 
+	 $id = 'info-box-' . rand( 1, 100 );
+	 
+	 if (isset($column)) 		{ $column 		 = sanitize_html_class($column); } 
+	 if (isset($title)) 		{ $title 		 = esc_attr($title); }
+	 if (isset($image)) 		{ $image 		 = esc_url ($image); }
+	 if (isset($styletext)) 	{ $styletext  	 = esc_html($styletext); }
+	 if (isset($styletitle)) 	{ $styletitle 	 = esc_html($styletitle); }
+	 if (isset($last)) 			{ $last = 'last'; } else { $last = ''; }
+	 if (isset($icon_position)) { $icon_position = sanitize_html_class($icon_position);} 
+	 if (isset($icon)) { $icon = sanitize_html_class($icon);} 
+	 
 	 
 	 if ($icon_position == 'left') {
 		$styletext  .= $styletext . 'text-align:left; ';
@@ -119,33 +110,38 @@ function ffs_info_box ($atts, $content = null) {
 	 }
 	 
 	 $out .= '<div id="'.$id.'" class="'. $column .' ffs-info-box ' . $icon_position . ' ' . $last . '" >';
+	 if (($link != '') && ($link != '#')) {
+		$out .= '<a href="'.esc_url($link).'">';
+	 }
 		if (($image != '') || ($icon != '')) {
 			$out .= '<div class="ffs-icon-box">';
 			if ($image != '') {  
 				$out .= '<img class="icon" src="' . esc_url($image) .'" title="' . $title   . '" />'; 
 			} else {
-				if ($icon != '') {
-					$out .= '<span class="ffs-icon-container"><i class="fa '. $icon .'" style="'.$styleicon.'"></i></span>';
-				}
+				if ($icon != '')  $out .= '<span class="ffs-icon-container"><i class="fa '. $icon .'" style="'.$styleicon.'"></i></span>';
+				
 			}	
 			$out .= '</div>';
 		}
 		
 		$out .= '<div class="ffs-content-box">';
 			if ($title   != '') {  $out .= '<div class="infobox-title" style="' . $styletitle .'">'  . $title   . '</div>'; }
-			if ($content != '') {  $out .= '<div class="infobox-text"  style="' . $styletext  .'" >' . $content . '</div>'; }
+			if ($content != '') {  $out .= '<div class="infobox-text"  style="' . $styletext  .'" >' . do_shortcode($content) . '</div>'; }
 		$out .= '</div>';
 		
+		if (($link != '') && ($link != '#')) {
+			$out .= '</a>';
+		}
 	 $out .= '</div>';
 	return $out;	 
 } 
-add_shortcode ("ffs_ibox", "ffs_info_box");
+add_shortcode ("fruitful_ibox", "fruitful_info_box");
 
-function ffs_tabs_shortcode($atts, $content = null) {
+function fruitful_tabs_shortcode($atts, $content = null) {
 	$output	    = '';
 	$tab_titles = array();
 	$tabs_class = 'tab_titles';
-	shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => ''), $atts, 'ffs_tabs');
+	shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => ''), $atts, 'fruitful_tabs');
 	
 	$id 	= 'ffs-tabbed-' . rand( 1, 100 );
 	$type 	= 'default';
@@ -181,107 +177,78 @@ function ffs_tabs_shortcode($atts, $content = null) {
 	$output .= '</ul>';
 	
 	$output .= '<div class="resp-tabs-container">';
-			$output .= ffs_esc_content_pbr(do_shortcode($content));
+			$output .= fruitful_esc_content_pbr(do_shortcode($content));
 		$output .= '</div>';
 	$output .= '</div>';
 	$output .= '<div class="clearfix"></div>';
 	return $output;
 }
-add_shortcode('ffs_tabs', 'ffs_tabs_shortcode');
+add_shortcode('fruitful_tabs', 'fruitful_tabs_shortcode');
 
-function ffs_tab_shortcode ( $atts, $content = null ) {
+function fruitful_tab_shortcode ( $atts, $content = null ) {
 		$defaults = array( 'title' => 'Tab' );
 		extract( shortcode_atts( $defaults, $atts));
 		$class = '';
 		if ( $title != 'Tab' ) {
 			 $class = ' tab-' . sanitize_title( $title );
 		}
-		return '<div class="ffs_tab' . esc_attr( $class ) . '">' . do_shortcode( $content ) . '</div>';
+		return '<div class="fruitful_tab' . esc_attr( $class ) . '">' . do_shortcode( $content ) . '</div>';
 } 
-add_shortcode( 'ffs_tab', 'ffs_tab_shortcode', 99 );
+add_shortcode( 'fruitful_tab', 'fruitful_tab_shortcode', 99 );
 
-
-function ffs_height_separator ( $atts, $content = null) {
-	extract( shortcode_atts( array( 'height'  => '20'), $atts ), 'fss_sep' );
-    if($height == '') {
-      $return = '';
-    } else{
-      $return = 'style="height: '.$height.'px;"';
-    }
-      
-     return '<div class="clear"></div><div class="gap" ' . $return . '></div>';
-}
-add_shortcode( 'fss_sep', 'ffs_height_separator' );
-
-function ffs_sep ($atts, $content = null) {
-	$out = '';
-	shortcode_atts(array(
-		  'id'		=> '',
-		  'height'	=> '',
-		  'style' 	=> ''
-     ), $atts, 'description');
+function fruitful_sep ($atts, $content = null) {
+	$out = $height = $style = '';
+	extract(shortcode_atts(array(
+		  'id'		=> 'ffs-sep-' . rand( 1, 100 ),
+		  'height'	=> 10,
+		  'style' 	=> 'border-bottom:1px solid #ebebeb; '
+     ), $atts));
 	
-	$id = 'ffs-sep-' . rand( 1, 100 );
+	if (!empty($id))    	{ $id = sanitize_html_class($id); }
+	if (!empty($height))    { $height = sanitize_html_class($height); }
+	if (!empty($style)) 	{ $style = esc_html($style); }
 	
-	$style  = 'border-bottom:1px solid #ebebeb; ';
-	$height = 10;
-	
-	if (!empty($atts['id']))    { $id = sanitize_html_class($atts['id']); }
-	if (!empty($atts['height']))    { $height = sanitize_html_class($atts['height']); }
-	if (!empty($atts['style'])) { $style = esc_html($atts['style']); }
-	
-	
-   
     $out .= '<div class="ffs-sep" id="'. $id .'" style="'.$style.' height:'.$height.'px; "></div>';
 	$out .= '<div class="clearfix"></div>';
 	
     return $out;
 }
-add_shortcode ("ffs_sep", "ffs_sep");
+add_shortcode ("fruitful_sep", "fruitful_sep");
 
-function ffs_alert_shortcode ($atts, $content = null) {
-	$out = '';
+function fruitful_alert_shortcode ($atts, $content = null) {
+	$out = $type = '';
 	shortcode_atts(array(
-		  'id'		=> '',
+		  'id'		=> 'ffs-alert-' . rand( 1, 100 ),
 		  'type'	=> ''
      ), $atts, 'fss_alert');
 	
-	$id = 'ffs-alert-' . rand( 1, 100 );
-	$type	= '';
-	
-	
-	if (!empty($atts['id']))    { $id   = sanitize_html_class($atts['id']); }
-	if (!empty($atts['type']))  { $type = sanitize_html_class($atts['type']); }
+	if (!empty($id))    { $id   = sanitize_html_class($id); }
+	if (!empty($type))  { $type = sanitize_html_class($type); }
 	
 	
 	$out .= '<div id="'.$id.'" class="alert '.$type.'">';
 		$out .= '<span class="close" data-dismiss="alert">&times;</span>';
-		$out .= ffs_esc_content_pbr($content);
+		$out .= fruitful_esc_content_pbr($content);
 	$out .= '</div>';
 	$out .= '<div class="clearfix"></div>';
     return $out;
 }
-add_shortcode ("ffs_alert", "ffs_alert_shortcode");
+add_shortcode ("fruitful_alert", "fruitful_alert_shortcode");
 
 
-function ffs_pbar_shortcode ($atts, $content = null) {
-	$out = '';
-	shortcode_atts(array(
-		  'id'		 => '',
+function fruitful_pbar_shortcode ($atts, $content = null) {
+	$out = $type = $class = '';
+	extract(shortcode_atts(array(
+		  'id'		 => 'ffs-pbar-' . rand( 1, 100 ),
 		  'type'	 => '',
-		  'active'   => '',
-		  'stripped' => ''
-     ), $atts, 'fss_alert');
+		  'active'   => false,
+		  'stripped' => false
+     ), $atts));
 	
-	$id = 'ffs-pbar-' . rand( 1, 100 );
-	$type = $class = '';
-	$active = false;
-	$stripped = false;
-	
-	if (!empty($atts['id']))    { $id   = sanitize_html_class($atts['id']); }
-	if (!empty($atts['type']))  { $type = sanitize_html_class($atts['type']); }
-	if (!empty($atts['active']))  { $active = sanitize_html_class($atts['active']); }
-	if (!empty($atts['stripped']))  { $stripped = sanitize_html_class($atts['stripped']); }
+	if (!empty($id))    { $id   = sanitize_html_class($id); }
+	if (!empty($type))  { $type = sanitize_html_class($type); }
+	if (!empty($active))  { $active = sanitize_html_class($active); }
+	if (!empty($stripped))  { $stripped = sanitize_html_class($stripped); }
 	
 	$class .= $type;
 	if ($stripped)	{ $class  .= ' progress-striped'; }
@@ -290,28 +257,26 @@ function ffs_pbar_shortcode ($atts, $content = null) {
 	
 	
 	$out .= '<div id="'.$id.'" class="progress '.$class.'">';
-		$out .= ffs_esc_content_pbr(do_shortcode($content));
+		$out .= fruitful_esc_content_pbr(do_shortcode($content));
 	$out .= '</div>';
 	$out .= '<div class="clearfix"></div>';
     return $out;
 }
-add_shortcode ("ffs_pbar", "ffs_pbar_shortcode");
+add_shortcode ("fruitful_pbar", "fruitful_pbar_shortcode");
 
-function ffs_bar_shortcode ( $atts, $content = null ) {
-		shortcode_atts(array(
+function fruitful_bar_shortcode ( $atts, $content = null ) {
+		$type = $width = '';
+		extract(shortcode_atts(array(
 							'type'	=> '',
-							'width' => ''
-		), $atts, 'ffs_bar');
+							'width' => '60%'
+		), $atts));
 		
-		$type	= '';
-		$width  = '60%';
-		
-		if (!empty($atts['type']))  { $type = sanitize_html_class($atts['type']); }
-		if (!empty($atts['width']))    { $width   = esc_attr($atts['width']); }
+		if (!empty($type))  { $type = sanitize_html_class($type); }
+		if (!empty($width)) { $width = esc_attr($width); }
 		 
 		return '<div class="bar '.$type.'" style="width: '.$width.';"></div>';
 } 
-add_shortcode( 'ffs_bar', 'ffs_bar_shortcode', 99 );
+add_shortcode( 'fruitful_bar', 'fruitful_bar_shortcode', 99 );
 
 
 /*
@@ -325,41 +290,31 @@ add_shortcode( 'ffs_bar', 'ffs_bar_shortcode', 99 );
 	
 */
 
-function ffs_btn_shortcode ( $atts, $content = null ) {
-		$out = '';
-		shortcode_atts(array(
-							'size'		 	=> '',
-							'color' 	 	=> '',
-							'type'		 	=> '',
-							'state'		 	=> '',
-							'text_color'	=> '',
-							'icon'		 	=> '',
-							'icon_position' => ''
+function fruitful_btn_shortcode ( $atts, $content = null ) {
+		$out = $size = $color = $type = $state = $text_color = $icon =  $icon_position = $link = $options = "";
+		extract(shortcode_atts(array(
+									'size'		 	=> 'small',
+									'color' 	 	=> 'primary',
+									'type'		 	=> 'link',
+									'state'		 	=> '',
+									'text_color'	=> '#fff',
+									'icon'		 	=> '',
+									'icon_position' => 'left',
+									'link'			=> '#'
 							
-							
-		), $atts, 'ffs_bar');
+		), $atts));
 		
-		$id 	= 'ffs-button-' . rand( 1, 1000 );
-		$size	= 'small';
-		$color  = 'primary';
-		$type	= 'link';
-		$state	= '';
-		$text_color = '#fff';
-		$icon 	= '';
-		$icon_position 	= 'left';
-		$link   = "#";
+		$id = 'ffs-button-' . rand( 1, 1000 );
 		
-		$options = '';
+		if (!empty($size))   		{ $size  = sanitize_html_class($size); 		}
+		if (!empty($color))  		{ $color = sanitize_html_class($color); 	}
+		if (!empty($type))			{ $type  = sanitize_html_class($type);		}
+		if (!empty($state))  		{ $state = sanitize_html_class($state); 	}
+		if (!empty($text_color))  	{ $text_color = sanitize_html_class($text_color); }
 		
-		if (!empty($atts['size']))   { $size  = sanitize_html_class($atts['size']); 	}
-		if (!empty($atts['color']))  { $color = sanitize_html_class($atts['color']); 	}
-		if (!empty($atts['type']))   { $type  = sanitize_html_class($atts['type']);		}
-		if (!empty($atts['state']))  { $state = sanitize_html_class($atts['state']); 	}
-		if (!empty($atts['text_color']))  { $text_color = sanitize_html_class($atts['text_color']); }
-		
-		if (!empty($atts['icon']))  { $icon = sanitize_html_class($atts['icon']); }
-		if (!empty($atts['icon_position']))  { $icon_position = sanitize_html_class($atts['icon_position']); }
-		if (!empty($atts['link']))  { $link = esc_url(sanitize_html_class($atts['link'])); }
+		if (!empty($icon))  		{ $icon = sanitize_html_class($icon); }
+		if (!empty($icon_position)) { $icon_position = sanitize_html_class($icon_position); }
+		if (!empty($link))  		{ $link = esc_url($link); }
 		
 		if (($size == 'mini') || ($size == 'small') || ($size == 'large')) {
 			$options .= ' btn-' . $size;
@@ -379,7 +334,7 @@ function ffs_btn_shortcode ( $atts, $content = null ) {
 		$options .= ' '. $state;
 		$text_color = '#' .$text_color;
 		
-		$content = do_shortcode(ffs_esc_content_pbr($content));
+		$content = do_shortcode(fruitful_esc_content_pbr($content));
 		
 		if ($type == 'link') {
 			$out  = '<a href="'.$link.'" class="btn'.$options.'" style="color:'.$text_color.';" target="_blank">';
@@ -417,10 +372,10 @@ function ffs_btn_shortcode ( $atts, $content = null ) {
 		
 		return $out;
 } 
-add_shortcode( 'ffs_btn', 'ffs_btn_shortcode', 99 );
+add_shortcode( 'fruitful_btn', 'fruitful_btn_shortcode', 99 );
 
 
-function ffs_esc_content_pbr($content = null) {
+function fruitful_esc_content_pbr($content = null) {
 	 $content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content );
 	 $Old     = array( '<br />', '<br>' );
 	 $New     = array( '','' );

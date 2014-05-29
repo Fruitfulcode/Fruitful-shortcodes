@@ -1,0 +1,222 @@
+.row, .clearfix {
+	zoom: 1;
+}
+
+.clearfix:before, .clearfix:after, .row:before, .row:after {
+	content: '';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* Columns */
+/*-------------------------------------------------------------------------------------------*/
+.ffs-two-one		{width:48%;}
+.ffs-three-one		{width:30.66%;}
+.ffs-three-two		{width:65.33%;}
+.ffs-four-one		{width:22%;}
+.ffs-four-two		{width:48%;}
+.ffs-four-three		{width:74%;}
+.ffs-five-one		{width:16.8%;}
+.ffs-five-two		{width:37.6%;}
+.ffs-five-three		{width:58.4%;}
+.ffs-five-four		{width:67.2%;}
+.ffs-six-one		{width:13.33%;}
+.ffs-six-two		{width:30.66%;}
+.ffs-six-three		{width:47.99%;}
+.ffs-six-four		{width:65.33%;}
+.ffs-six-five		{width:82.67%;}
+
+.ffs-two-one,
+.ffs-three-one,
+.ffs-three-two,
+.ffs-four-one,
+.ffs-four-two,
+.ffs-four-three,
+.ffs-five-one,
+.ffs-five-two,
+.ffs-five-three,
+.ffs-five-four,
+.ffs-six-one,
+.ffs-six-two,
+.ffs-six-three,
+.ffs-six-four,
+.ffs-six-five{
+	float:left;
+	margin-right:4%;
+	margin-bottom:4%;
+	position:relative;
+}
+
+.last{
+	clear:right;
+	margin-right:0 !important;
+}
+
+@media only screen and (max-width: 768px) {
+	.ffs-two-one,
+	.ffs-three-one,
+	.ffs-three-two,
+	.ffs-four-one,
+	.ffs-four-two,
+	.ffs-four-three,
+	.ffs-five-one,
+	.ffs-five-two,
+	.ffs-five-three,
+	.ffs-five-four,
+	.ffs-six-one,
+	.ffs-six-two,
+	.ffs-six-three,
+	.ffs-six-four,
+	.ffs-six-five {
+		margin-right: 0; 
+		width: 100% !important;
+	}
+}
+
+
+.info-box-row {
+    display: block;
+    float: left;
+    margin: 30px 0 25px;
+    width: 100%;
+}
+
+.info-box-row .ffs-info-box .infobox-title {
+    margin: 0 0 5px;
+    font-weight:300
+}
+
+.info-box-row .ffs-info-box .infobox-text {
+	padding:0;
+}
+
+.info-box-row .ffs-info-box  img.icon {
+    display:block;
+    min-height:51px;
+    margin:0 auto 15px;
+    min-width:51px;
+}
+
+.info-box-row .ffs-info-box .ffs-icon-container {
+	text-align: center;
+	margin: 0 auto;
+	display: block;
+	width: auto;
+}
+
+.info-box-row .ffs-info-box .ffs-icon-container i {
+	text-align: center;
+	font-size: 26px;
+	padding: 10px;
+	margin: 5px 0;
+}
+
+.ffs-info-box.center .ffs-icon-box,
+.ffs-info-box.center .ffs-content-box {
+	width:100%;
+}
+
+.ffs-info-box.left .ffs-icon-box, 
+.ffs-info-box.right .ffs-icon-box {
+	width:20%;
+	display:block;
+}
+
+.ffs-info-box.left .ffs-content-box, 
+.ffs-info-box.right .ffs-content-box {
+	width:80%;
+	display:block;
+}
+
+.ffs-info-box.left .ffs-icon-box,
+.ffs-info-box.right .ffs-content-box {
+	float:left;
+}
+
+.ffs-info-box.right .ffs-icon-box,
+.ffs-info-box.left .ffs-content-box {
+	float:right;
+}
+
+.btn .ffs-icon-container {
+	font-size:inherit;
+}
+
+.btn .ffs-icon-container.left {
+	padding:0 8px 0 0;
+	text-align:left;
+}
+
+.btn .ffs-icon-container.right {
+	padding:0 0 0 8px;
+	text-align:right;
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* Description box */
+/*-------------------------------------------------------------------------------------------*/
+
+.fruitful_description_box {
+	position:relative;
+	z-index:0;
+}
+
+.fruitful_description {
+    float:left;
+    width:100%;
+    min-height:50px;
+    margin:10px 0 20px 0;
+	position:relative;       
+	display:block;
+	background:#fff;
+}
+
+
+.fruitful_description:before  {
+	position: absolute;
+    width: 80%;
+    height: 45%;
+    left: 10%;
+    border-radius: 50%;
+    z-index: -1;
+    top: 0%;
+    content: "";
+	-moz-box-shadow: 0 -7px 16px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0 -7px 16px rgba(0,0,0,0.4);
+    box-shadow: 0 -7px 16px rgba(0,0,0,0.4);
+    
+}
+
+.fruitful_description:after {
+	position: absolute;
+    width: 80%;
+    height: 45%;
+    left: 10%;
+	border-radius: 50%;
+	z-index: -1;
+	bottom: 0%;
+	content: "";
+	-moz-box-shadow: 0 7px 16px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0 7px 16px rgba(0,0,0,0.4);
+    box-shadow: 0 7px 16px rgba(0,0,0,0.4);
+}	  
+  
+	  
+.fruitful_description .text {
+    margin:0 auto;
+	width: 90%;
+	padding: 10px 0;
+}
+
+/*Separator*/
+.ffs-sep {
+	display:block;
+	margin: 0 0 30px;
+}
+
