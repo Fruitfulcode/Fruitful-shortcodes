@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: fruitfulcode
 Donate link: http://fruitfulcode.com
-Tags: fruitful, shortcode, shortcodes, short code, tab, tabs, horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button
+Tags: fruitful, shortcode, shortcodes, short code, bootstrap, tab, tabs, horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button
 Requires at least: 3.4.1
-Tested up to: 3.8.2
+Tested up to: 3.9.1
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Add additional content shortcodes: horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button
 
 == Description ==
-
+http://plugins.fruitfulcode.com/shortcodes/
 <h3>Shortcodes</h3>
 <ul>
 <li>Horizontal tabs</li>
@@ -41,11 +41,14 @@ If you have any questions or recommendations regarding the functionality of our 
 
 == Installation ==
 
-
 1. Upload `fruitful-shortcodes` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Edit your content via wysiwyg editor
-4. Add shortcodes from additional bar 
+3. Settings > Fruitful Shortcodes
+4. Choose display settins
+5. Edit post, page or other content type
+6. Switch from text to visual edit your content via wysiwyg editor
+7. Add shortcodes from additional bar 
+http://plugins.fruitfulcode.com/shortcodes/
 
 == Frequently Asked Questions ==
 
@@ -55,15 +58,17 @@ Please send request to our support, we will check the issues.
 
 = I haven’t found an answer to my question, what should I do? = 
 
-You can check <a href="http://wordpress.org/support/plugin/woocommerce-reviews-widget">support forum</a> or <a class="send-mail" target="_blank" href="mailto:mail@fruitfulcode.com?subject=Woocommerce%20reviews%20widget">send email to us</a>
+You can check <a href="http://support.fruitfulcode.com/hc/en-us/sections/200406396-Fruitful-shortcodes">support forum</a> or <a class="send-mail" target="_blank" href="mailto:mail@fruitfulcode.com?subject=Woocommerce%20reviews%20widget">send email to us</a>
 
 == Screenshots ==
 
-1. Plugin options
+1. General > Fruitful Shortcodes
+2. Visual editor additional shortcodes
+3. Add horizontal tabs
 
 == Changelog ==
 
-= 1.0 = (28.05.2014)
+= 1.0 = (29.05.2014)
 * Initial release
 
 
