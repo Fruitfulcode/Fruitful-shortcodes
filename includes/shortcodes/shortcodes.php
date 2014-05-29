@@ -60,7 +60,7 @@ function fruitful_ibox_row_shortcode ($atts, $content = null) {
 	 if (isset($atts['id'])) { $id = sanitize_html_class($atts['id']); }
 	 
 	 $out .= '<div class="info-box-row clearfix" id="'. $id .'">';
-		$out .=	fruitful_esc_content_pbr(do_shortcode($content));
+		$out .=	fruitful_sh_esc_content_pbr(do_shortcode($content));
 	 $out .= '</div>';
 	 $out .= '<div class="clearfix"></div>';
 	 
@@ -126,7 +126,7 @@ function fruitful_info_box ($atts, $content = null) {
 		
 		$out .= '<div class="ffs-content-box">';
 			if ($title   != '') {  $out .= '<div class="infobox-title" style="' . $styletitle .'">'  . $title   . '</div>'; }
-			if ($content != '') {  $out .= '<div class="infobox-text"  style="' . $styletext  .'" >' . do_shortcode($content) . '</div>'; }
+			if ($content != '') {  $out .= '<div class="infobox-text"  style="' . $styletext  .'" >' . fruitful_sh_esc_content_pbr(do_shortcode($content)) . '</div>'; }
 		$out .= '</div>';
 		
 		if (($link != '') && ($link != '#')) {
@@ -177,7 +177,7 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	$output .= '</ul>';
 	
 	$output .= '<div class="resp-tabs-container">';
-			$output .= fruitful_esc_content_pbr(do_shortcode($content));
+			$output .= fruitful_sh_esc_content_pbr(do_shortcode($content));
 		$output .= '</div>';
 	$output .= '</div>';
 	$output .= '<div class="clearfix"></div>';
@@ -228,7 +228,7 @@ function fruitful_alert_shortcode ($atts, $content = null) {
 	
 	$out .= '<div id="'.$id.'" class="alert '.$type.'">';
 		$out .= '<span class="close" data-dismiss="alert">&times;</span>';
-		$out .= fruitful_esc_content_pbr($content);
+		$out .= fruitful_sh_esc_content_pbr($content);
 	$out .= '</div>';
 	$out .= '<div class="clearfix"></div>';
     return $out;
@@ -257,7 +257,7 @@ function fruitful_pbar_shortcode ($atts, $content = null) {
 	
 	
 	$out .= '<div id="'.$id.'" class="progress '.$class.'">';
-		$out .= fruitful_esc_content_pbr(do_shortcode($content));
+		$out .= fruitful_sh_esc_content_pbr(do_shortcode($content));
 	$out .= '</div>';
 	$out .= '<div class="clearfix"></div>';
     return $out;
@@ -334,7 +334,7 @@ function fruitful_btn_shortcode ( $atts, $content = null ) {
 		$options .= ' '. $state;
 		$text_color = '#' .$text_color;
 		
-		$content = do_shortcode(fruitful_esc_content_pbr($content));
+		$content = do_shortcode(fruitful_sh_esc_content_pbr($content));
 		
 		if ($type == 'link') {
 			$out  = '<a href="'.$link.'" class="btn'.$options.'" style="color:'.$text_color.';" target="_blank">';
@@ -375,7 +375,7 @@ function fruitful_btn_shortcode ( $atts, $content = null ) {
 add_shortcode( 'fruitful_btn', 'fruitful_btn_shortcode', 99 );
 
 
-function fruitful_esc_content_pbr($content = null) {
+function fruitful_sh_esc_content_pbr($content = null) {
 	 $content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content );
 	 $Old     = array( '<br />', '<br>' );
 	 $New     = array( '','' );
