@@ -44,7 +44,7 @@ class ffsSettingsPage   {
 
         add_settings_section(
             'ffsSettingSection', 	// ID
-            'Shortcodes Settings', 	// Title
+            '', 	// Title
             null, // Callback
             'ffsAdminSettings' // Page
         );  
