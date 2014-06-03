@@ -93,7 +93,7 @@ function fruitful_info_box ($atts, $content = null) {
 	 if (isset($image)) 		{ $image 		 = esc_url ($image); }
 	 if (isset($styletext)) 	{ $styletext  	 = esc_html($styletext); }
 	 if (isset($styletitle)) 	{ $styletitle 	 = esc_html($styletitle); }
-	 if (isset($last)) 			{ $last = 'last'; } else { $last = ''; }
+	 if (isset($last)) 			{ if ($last) $last = 'last'; } else { $last = ''; }
 	 if (isset($icon_position)) { $icon_position = sanitize_html_class($icon_position);} 
 	 if (isset($icon)) { $icon = sanitize_html_class($icon);} 
 	 
