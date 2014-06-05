@@ -147,18 +147,20 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	$output	    = '';
 	$tab_titles = array();
 	$tabs_class = 'tab_titles';
-	shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => ''), $atts, 'fruitful_tabs');
+	shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => '', 'btnw' => ''), $atts, 'fruitful_tabs');
 	
 	$id 	= 'ffs-tabbed-' . rand( 1, 100 );
 	$type 	= 'default';
 	$width 	= 'auto';
 	$fit	= 'false';
 	$link   = '#';
+	$btnw	= '30%';
 	
 	if (isset($atts['id'])) 	{ $id 	 = sanitize_html_class($atts['id']); }
 	if (isset($atts['type'])) 	{ $type  = esc_js($atts['type']); }
 	if (isset($atts['width'])) 	{ $width = esc_js($atts['width']); }
 	if (isset($atts['fit'])) 	{ $fit 	 = esc_js($atts['fit']); }
+	if (isset($atts['btnw'])) 	{ $btnw  = esc_js($atts['btnw']); }
 	
 	$output .= '<script type="text/javascript"> ';
 		$output .= 'jQuery(document).ready(function() { ';
@@ -166,15 +168,20 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 			$output .= '    type: 	"'.$type.'", ';
 			$output .= '    width: "'.$width.'", ';
 			$output .= '    fit: 	'.$fit;
-			$output .= '    }); ';
-		$output .= '	}); ';
+			$output .= '}); ';
+			$output .= 'var cont_width = jQuery("#'.$id.'.resp-vtabs").outerWidth() - jQuery("#'.$id.'.resp-vtabs .resp-tabs-list").outerWidth() - 3;';
+			$output .= 'jQuery("#'.$id.'.resp-vtabs .resp-tabs-container").css({"width":cont_width});';
+		$output .= '}); ';
 	$output .= '</script>';
 	
 	preg_match_all( '/tab title="([^\"]+)"/i', $content, $matches, PREG_OFFSET_CAPTURE );
 	if ( isset( $matches[1] ) ) { $tabs = $matches[1]; } 
 	
 	$output .= '<div id="'.$id.'" class="ffs-tabbed-nav">';
-		$output .= '<ul class="resp-tabs-list">';
+		$output .= '<ul class="resp-tabs-list" ';
+			if ($type == 'vertical') { $output .= 'style="width:'.$btnw.'"'; }
+		$output .= '>';
+			
 	if (count($tabs)) {
 		foreach ($tabs as $tab) {
 			$output .= '<li>' . esc_html($tab[0]) . '</li>';
