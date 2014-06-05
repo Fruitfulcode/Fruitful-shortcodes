@@ -22,7 +22,8 @@ function fruitful_description_box ($atts, $content = null) {
 	$out = '';
 	shortcode_atts(array(
 		  'id'		=> '',
-		  'style' 	=> ''
+		  'style' 	=> '',
+		  'shadowtype'	=> ''
      ), $atts, 'fruitful_dbox');
 	
 	$id = 'desc-box-' . rand( 1, 100 );
@@ -33,13 +34,18 @@ function fruitful_description_box ($atts, $content = null) {
 		$style = ' font-size: 40px; text-transform : uppercase; text-align: center; font-weight: 300; line-height: 1.2;';
 	}
 	
-	if (!empty($atts['id']))    { $id 	 = sanitize_html_class($atts['id']); }
-	if (!empty($atts['style'])) { $style = esc_html($atts['style']); }
-   
+	if (!empty($atts['id']))	{ $id 	 = sanitize_html_class($atts['id']); }
+	if (!empty($atts['style']))	{ $style = esc_html($atts['style']); }
+	if (!empty($atts['shadowtype'])){ $type = esc_html($atts['shadowtype']); }
+	
 	$out .= '<div class="fruitful_description_box">';   
-		$out .= '<div class="fruitful_description" id="'. $id .'">';
-			if (!empty($content)) { $out .=	'<div class="text" style="'. $style .'">' . $content . '</div>'; } else 
-						  { $out .= '<div class="text" style="'. $style .'">No text Description</div>'; }			
+		$out .= '<div class="fruitful_description ';
+			if (!empty($atts['shadowtype'])){ $out .= 'shadow-'.$type; } else { $out .= 'shadow-type-1';}
+		$out .= ' " id="'. $id .'">';
+			$out .= '<span class="top_line"></span>';
+				if (!empty($content)) { $out .=	'<div class="text" style="'. $style .'">' . $content . '</div>'; } else 
+							  { $out .= '<div class="text" style="'. $style .'">No text Description</div>'; }		
+			$out .= '<span class="bottom_line"></span>';
 		$out .= '</div>';
 	$out .= '</div>';	
 	$out .= '<div class="clearfix"></div>';
