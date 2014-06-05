@@ -147,20 +147,20 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	$output	    = '';
 	$tab_titles = array();
 	$tabs_class = 'tab_titles';
-	shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => '', 'btnw' => ''), $atts, 'fruitful_tabs');
+	shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => '', 'widthtab' => ''), $atts, 'fruitful_tabs');
 	
 	$id 	= 'ffs-tabbed-' . rand( 1, 100 );
 	$type 	= 'default';
 	$width 	= 'auto';
 	$fit	= 'false';
 	$link   = '#';
-	$btnw	= '30%';
+	$widthtab	= '30%';
 	
 	if (isset($atts['id'])) 	{ $id 	 = sanitize_html_class($atts['id']); }
 	if (isset($atts['type'])) 	{ $type  = esc_js($atts['type']); }
 	if (isset($atts['width'])) 	{ $width = esc_js($atts['width']); }
 	if (isset($atts['fit'])) 	{ $fit 	 = esc_js($atts['fit']); }
-	if (isset($atts['btnw'])) 	{ $btnw  = esc_js($atts['btnw']); }
+	if (isset($atts['widthtab'])) 	{ $widthtab  = esc_js($atts['widthtab']); }
 	
 	$output .= '<script type="text/javascript"> ';
 		$output .= 'jQuery(document).ready(function() { ';
@@ -179,7 +179,7 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	
 	$output .= '<div id="'.$id.'" class="ffs-tabbed-nav">';
 		$output .= '<ul class="resp-tabs-list" ';
-			if ($type == 'vertical') { $output .= 'style="width:'.$btnw.'"'; }
+			if ($type == 'vertical') { $output .= 'style="width:'.$widthtab.'"'; }
 		$output .= '>';
 			
 	if (count($tabs)) {
