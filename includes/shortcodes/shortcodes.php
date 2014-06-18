@@ -77,11 +77,12 @@ add_shortcode('fruitful_ibox_row', 'fruitful_ibox_row_shortcode');
 
 /*Add information box into content block*/
 function fruitful_info_box ($atts, $content = null) {
-	$image = $title = $column = $styletext = $styletitle = $out = $link = '';
+	$image = $title = $column = $class = $styletext = $styletitle = $out = $link = '';
 	$last =  false;
 	extract(shortcode_atts(array(
 		  'column'			=> '',
 		  'title'	   		=> '', 
+		  'class'	   		=> '', 
 		  'link'			=> '#',
 		  'image' 			=> '', 
 		  'icon'			=> 'fa-check-square-o',
@@ -94,14 +95,15 @@ function fruitful_info_box ($atts, $content = null) {
 	
 	 $id = 'info-box-' . rand( 1, 100 );
 	 
-	 if (isset($column)) 		{ $column 		 = sanitize_html_class($column); } 
-	 if (isset($title)) 		{ $title 		 = esc_attr($title); }
-	 if (isset($image)) 		{ $image 		 = esc_url ($image); }
-	 if (isset($styletext)) 	{ $styletext  	 = esc_html($styletext); }
-	 if (isset($styletitle)) 	{ $styletitle 	 = esc_html($styletitle); }
+	 if (isset($column)) 		{ $column		= sanitize_html_class($column); } 
+	 if (isset($title)) 		{ $title		= esc_attr($title); }
+	 if (isset($class)) 		{ $title		= sanitize_html_class($title); }
+	 if (isset($image)) 		{ $image		= esc_url ($image); }
+	 if (isset($styletext)) 	{ $styletext	= esc_html($styletext); }
+	 if (isset($styletitle)) 	{ $styletitle	= esc_html($styletitle); }
 	 if (isset($last)) 			{ if ($last) $last = 'last'; } else { $last = ''; }
 	 if (isset($icon_position)) { $icon_position = sanitize_html_class($icon_position);} 
-	 if (isset($icon)) { $icon = sanitize_html_class($icon);} 
+	 if (isset($icon))			{ $icon			= sanitize_html_class($icon);} 
 	 
 	 
 	 if ($icon_position == 'left') {
@@ -115,7 +117,7 @@ function fruitful_info_box ($atts, $content = null) {
 		$styletitle = 'text-align:center; '.$styletitle	;
 	 }
 	 
-	 $out .= '<div id="'.$id.'" class="'. $column .' ffs-info-box ' . $icon_position . ' ' . $last . '" >';
+	 $out .= '<div id="'.$id.'" class="'.$class.' '. $column .' ffs-info-box ' . $icon_position . ' ' . $last . '" >';
 	 if (($link != '') && ($link != '#')) {
 		$out .= '<a href="'.esc_url($link).'">';
 	 }
