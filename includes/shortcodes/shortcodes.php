@@ -97,7 +97,7 @@ function fruitful_info_box ($atts, $content = null) {
 	 
 	 if (isset($column)) 		{ $column		= sanitize_html_class($column); } 
 	 if (isset($title)) 		{ $title		= esc_attr($title); }
-	 if (isset($class)) 		{ $title		= sanitize_html_class($title); }
+	 if (isset($class)) 		{ $class		= sanitize_html_class($class); }
 	 if (isset($image)) 		{ $image		= esc_url ($image); }
 	 if (isset($styletext)) 	{ $styletext	= esc_html($styletext); }
 	 if (isset($styletitle)) 	{ $styletitle	= esc_html($styletitle); }
