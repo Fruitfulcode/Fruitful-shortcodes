@@ -77,7 +77,7 @@ add_shortcode('fruitful_ibox_row', 'fruitful_ibox_row_shortcode');
 
 /*Add information box into content block*/
 function fruitful_info_box ($atts, $content = null) {
-	$image = $title = $column = $styletext = $out = $link = '';
+	$image = $title = $column = $styletext = $styletitle = $out = $link = '';
 	$last =  false;
 	extract(shortcode_atts(array(
 		  'column'			=> '',
@@ -105,14 +105,14 @@ function fruitful_info_box ($atts, $content = null) {
 	 
 	 
 	 if ($icon_position == 'left') {
-		$styletext  .= $styletext . 'text-align:left; ';
-		$styletitle .= $styletitle . 'text-align:left; ';
+		$styletext  = 'text-align:left; '.$styletext ;
+		$styletitle = 'text-align:left; '.$styletitle ;
 	 } else if ($icon_position == 'right') {
-		$styletext  .= $styletext . 'text-align:right; ';
-		$styletitle .= $styletitle . 'text-align:right; ';
+		$styletext  = 'text-align:right; '.$styletext ;
+		$styletitle = 'text-align:right; '.$styletitle ;
 	 } else {
-		$styletext  .= $styletext . 'text-align:center; ';
-		$styletitle .= $styletitle . 'text-align:center; ';
+		$styletext  = 'text-align:center; '.$styletext ;
+		$styletitle = 'text-align:center; '.$styletitle	;
 	 }
 	 
 	 $out .= '<div id="'.$id.'" class="'. $column .' ffs-info-box ' . $icon_position . ' ' . $last . '" >';
