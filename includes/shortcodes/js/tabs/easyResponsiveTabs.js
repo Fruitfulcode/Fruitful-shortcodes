@@ -101,8 +101,9 @@
 
                 //keep closed if option = 'closed' or option is 'accordion' and the element is in accordion mode
                 if(options.closed !== true && !(options.closed === 'accordion' && !$respTabsList.is(':visible')) && !(options.closed === 'tabs' && $respTabsList.is(':visible'))) {                  
-                    $($respTabs.find('.resp-accordion')[tabNum]).addClass('resp-tab-active');
-                    $($respTabs.find('.resp-tab-content')[tabNum]).addClass('resp-tab-content-active').attr('style', 'display:block');
+                    //next code are changed for closed all accordion tabs by default
+					//$($respTabs.find('.resp-accordion')[tabNum]).addClass('resp-tab-active');
+                    $($respTabs.find('.resp-tab-content')[tabNum]).addClass('resp-tab-content-active resp-accordion-closed');
                 }
                 //assign proper classes for when tabs mode is activated before making a selection in accordion mode
                 else {
