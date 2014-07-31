@@ -220,3 +220,6 @@
 	margin: 0 0 30px;
 }
 
+@media only screen and (max-width: 480px) {
+	.fruitful_description .text{font-size:20px !important;}
+}
