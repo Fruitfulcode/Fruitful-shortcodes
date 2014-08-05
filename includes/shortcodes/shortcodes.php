@@ -85,6 +85,7 @@ function fruitful_info_box ($atts, $content = null) {
 		  'class'	   		=> '', 
 		  'link'			=> '#',
 		  'image' 			=> '', 
+		  'alt' 			=> '', 
 		  'icon'			=> 'fa-check-square-o',
 		  'icon_position'	=> 'center',
 		  'styletext'	  	=> 'font-size:13px; ',
@@ -99,6 +100,7 @@ function fruitful_info_box ($atts, $content = null) {
 	 if (isset($title)) 		{ $title		= esc_attr($title); }
 	 if (isset($class)) 		{ $class		= sanitize_html_class($class); }
 	 if (isset($image)) 		{ $image		= esc_url ($image); }
+	 if (isset($alt)) 			{ $alt			= esc_html ($alt); }
 	 if (isset($styletext)) 	{ $styletext	= esc_html($styletext); }
 	 if (isset($styletitle)) 	{ $styletitle	= esc_html($styletitle); }
 	 if (isset($last)) 			{ if ($last) $last = 'last'; } else { $last = ''; }
@@ -124,7 +126,7 @@ function fruitful_info_box ($atts, $content = null) {
 		if (($image != '') || ($icon != '')) {
 			$out .= '<div class="ffs-icon-box">';
 			if ($image != '') {  
-				$out .= '<img class="icon" src="' . esc_url($image) .'" title="' . $title   . '" />'; 
+				$out .= '<img class="icon" src="' . esc_url($image) .'" title="' . $title   . '" alt="' . $alt . '" />'; 
 			} else {
 				if ($icon != '')  $out .= '<span class="ffs-icon-container"><i class="fa '. $icon .'" style="'.$styleicon.'"></i></span>';
 				
