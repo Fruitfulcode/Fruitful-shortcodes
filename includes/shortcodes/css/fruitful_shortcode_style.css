@@ -361,6 +361,7 @@
 	width: 50%;
 	bottom: 80%;
 	max-width: 300px;
+	min-height:4px;
 	background: #777;
 	-webkit-box-shadow: 0 -13px 16px #777;
 	box-shadow: 0 -13px 16px #777;
@@ -392,8 +393,9 @@
   bottom: 15px;
   left: 10px;
   width: 50%;
-  top: 80%;
+  top: 75%;
   max-width:300px;
+  min-height:4px;
   background: #777;
   -webkit-box-shadow: 0 13px 16px #777;
   -moz-box-shadow: 0 13px 16px #777;
