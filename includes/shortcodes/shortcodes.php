@@ -151,7 +151,7 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	$output	    = '';
 	$tab_titles = array();
 	$tabs_class = 'tab_titles';
-	shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => '', 'widthtab' => ''), $atts, 'fruitful_tabs');
+	extract(shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => '', 'widthtab' => '', 'tabcolor' => '#71AFFF'), $atts, 'fruitful_tabs'));
 	
 	$id 	= 'ffs-tabbed-' . rand( 1, 100 );
 	$type 	= 'default';
@@ -165,6 +165,7 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	if (isset($atts['width'])) 	{ $width = esc_js($atts['width']); }
 	if (isset($atts['fit'])) 	{ $fit 	 = esc_js($atts['fit']); }
 	if (isset($atts['widthtab'])) 	{ $widthtab  = esc_js($atts['widthtab']); }
+	if (isset($atts['tabcolor'])) 	{ $tabcolor  = esc_html($atts['tabcolor']); }
 	
 	$output .= '<script type="text/javascript"> ';
 		$output .= 'jQuery(document).ready(function() { ';
@@ -177,6 +178,12 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 			$output .= 'jQuery("#'.$id.'.resp-vtabs .resp-tabs-container").css({"width":cont_width});';
 		$output .= '}); ';
 	$output .= '</script>';
+	$output .= '<style>'."\n";
+		$output .= '#'.$id.' li.resp-tab-active,'."\n";
+		$output .= '#'.$id.' .resp-tabs-list li:hover,'."\n";
+		$output .= '#'.$id.' .resp-vtabs li.resp-tab-active,'."\n";
+		$output .= '#'.$id.' .resp-vtabs li:hover{border-color:'.$tabcolor.'}'."\n";
+	$output .= '</style>';
 	
 	preg_match_all( '/tab title="([^\"]+)"/i', $content, $matches, PREG_OFFSET_CAPTURE );
 	if ( isset( $matches[1] ) ) { $tabs = $matches[1]; } 
