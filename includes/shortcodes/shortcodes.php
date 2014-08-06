@@ -151,7 +151,7 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	$output	    = '';
 	$tab_titles = array();
 	$tabs_class = 'tab_titles';
-	extract(shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => '', 'widthtab' => '', 'tabcolor' => '#71AFFF'), $atts, 'fruitful_tabs'));
+	extract(shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => '', 'widthtab' => '', 'tabcolor' => '#71AFFF', 'closed' => 'true'), $atts, 'fruitful_tabs'));
 	
 	$id 	= 'ffs-tabbed-' . rand( 1, 100 );
 	$type 	= 'default';
@@ -166,6 +166,7 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	if (isset($atts['fit'])) 	{ $fit 	 = esc_js($atts['fit']); }
 	if (isset($atts['widthtab'])) 	{ $widthtab  = esc_js($atts['widthtab']); }
 	if (isset($atts['tabcolor'])) 	{ $tabcolor  = esc_html($atts['tabcolor']); }
+	if (isset($atts['closed'])) 	{ $closed  	 = esc_html($atts['closed']); }
 	
 	$output .= '<script type="text/javascript"> ';
 		$output .= 'jQuery(document).ready(function() { ';
@@ -189,8 +190,13 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	if ( isset( $matches[1] ) ) { $tabs = $matches[1]; } 
 	
 	$output .= '<div id="'.$id.'" class="ffs-tabbed-nav">';
-		$output .= '<ul class="resp-tabs-list" ';
-			if ($type == 'vertical') { $output .= 'style="width:'.$widthtab.'"'; }
+		$output .= '<ul class="resp-tabs-list"';
+			if ($type == 'vertical') { $output .= ' style="width:'.$widthtab.'"'; }
+			if ($type == 'accordion') { 
+				if ($closed == 'true') { 
+					$output .= ' data-closed="closed"'; 
+				}
+			}
 		$output .= '>';
 			
 	if (count($tabs)) {

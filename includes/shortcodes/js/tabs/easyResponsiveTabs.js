@@ -103,7 +103,16 @@
                 if(options.closed !== true && !(options.closed === 'accordion' && !$respTabsList.is(':visible')) && !(options.closed === 'tabs' && $respTabsList.is(':visible'))) {                  
                     //next code are changed for closed all accordion tabs by default
 					//$($respTabs.find('.resp-accordion')[tabNum]).addClass('resp-tab-active');
-                    $($respTabs.find('.resp-tab-content')[tabNum]).addClass('resp-tab-content-active resp-accordion-closed');
+					if ($($respTabs[tabNum]).hasClass('resp-easy-accordion')){
+						if ( $($respTabs[tabNum]).find('.resp-tabs-list').attr('data-closed') == 'closed'){
+							$($respTabs.find('.resp-tab-content')[tabNum]).addClass('resp-accordion-closed');
+						} else {
+							$($respTabs.find('.resp-accordion')[tabNum]).addClass('resp-tab-active');
+							$($respTabs.find('.resp-accordion')[tabNum]).next('.resp-tab-content').addClass('resp-tab-content-active');
+						}
+					} else {
+						$($respTabs.find('.resp-tab-content')[tabNum]).addClass('resp-tab-content-active resp-accordion-closed');
+					}
                 }
                 //assign proper classes for when tabs mode is activated before making a selection in accordion mode
                 else {
