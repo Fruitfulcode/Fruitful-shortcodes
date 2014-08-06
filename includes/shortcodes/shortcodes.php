@@ -180,9 +180,9 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	$output .= '</script>';
 	$output .= '<style>'."\n";
 		$output .= '#'.$id.' li.resp-tab-active,'."\n";
-		$output .= '#'.$id.' .resp-tabs-list li:hover,'."\n";
-		$output .= '#'.$id.' .resp-vtabs li.resp-tab-active,'."\n";
-		$output .= '#'.$id.' .resp-vtabs li:hover{border-color:'.$tabcolor.'}'."\n";
+		$output .= '#'.$id.' .resp-tabs-list li:hover{border-top-color:'.$tabcolor.'; border-bottom-color:'.$tabcolor.';}'."\n";
+		$output .= '#'.$id.'.resp-vtabs li.resp-tab-active,'."\n";
+		$output .= '#'.$id.'.resp-vtabs .resp-tabs-list li:hover{border-left-color:'.$tabcolor.'; border-top-color:#C1C1C1; border-right-color:'.$tabcolor.';}'."\n";
 	$output .= '</style>';
 	
 	preg_match_all( '/tab title="([^\"]+)"/i', $content, $matches, PREG_OFFSET_CAPTURE );
