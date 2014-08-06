@@ -4,7 +4,7 @@ Donate link: http://fruitfulcode.com
 Tags: admin, fruitful, shortcode, shortcodes, short code, editor, content, bootstrap, post, page, tab, tabs, horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button
 Requires at least: 3.4.1
 Tested up to: 3.9.1
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,13 +43,13 @@ If you have any questions or recommendations regarding the functionality of our 
 
 == Installation ==
 
-1. Upload `fruitful-shortcodes` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Settings > Fruitful Shortcodes
-4. Choose display settins
-5. Edit post, page or other content type
-6. Switch from text to visual edit your content via wysiwyg editor
-7. Add shortcodes from additional bar 
+1. Upload `fruitful-shortcodes` to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Settings > Fruitful Shortcodes.
+4. Choose display settins.
+5. Edit post, page or other content type.
+6. Switch from text to visual edit your content via wysiwyg editor.
+7. Add shortcodes from additional bar.
 http://plugins.fruitfulcode.com/shortcodes/
 
 == Frequently Asked Questions ==
@@ -64,26 +64,47 @@ You can check <a href="http://support.fruitfulcode.com/hc/en-us/sections/2004063
 
 == Screenshots ==
 
-1. General > Fruitful Shortcodes
-2. Visual editor additional shortcodes
-3. Add horizontal tabs
-4. Add vertical tab
+1. General > Fruitful Shortcodes.
+2. Visual editor additional shortcodes.
+3. Add horizontal tabs.
+4. Add vertical tab.
 5. Add accordion
-6. Add promo text with shadow
-7. Add column info boxes
-8. Add separator
-9. Add Alert box
-10. Add progress bar
-11. Add button
+6. Add promo text with shadow.
+7. Add column info boxes.
+8. Add separator.
+9. Add Alert box.
+10. Add progress bar.
+11. Add button.
 
 == Changelog ==
 
-= 1.1 = (05.06.2014)
-* Shortcode Description: New attribute shadowtype
-* Shortcode Vertical tabs: New attribute for changing left tab width
-* Bug fix: Last column
+= 1.2 = 
+Release Date: 06.08.2014
 
-= 1.0 = (29.05.2014)
+* New features
+	* Shortcode tabs: New attribute "tabcolor"
+	* Shortcode infobox: New attribute "alt" for image
+	* Shortcode vertical tab: New attribute "close"
+
+* Bugfixes
+	* Shortcode promo text: shawow type 
+	* Promo text size responsive
+	* Removed styles for content <p>
+
+
+= 1.1 =
+Release Date: 05.06.2014
+
+* New features
+	* Shortcode Description: New attribute shadowtype.
+	* Shortcode Vertical tabs: New attribute for changing left tab width.
+
+* Bugfixes
+	* Last column.
+
+= 1.0 = 
+Release Date: 29.05.2014
+
 * Initial release
 
 
