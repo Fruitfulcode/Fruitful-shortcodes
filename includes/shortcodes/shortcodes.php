@@ -321,7 +321,7 @@ add_shortcode( 'fruitful_bar', 'fruitful_bar_shortcode', 99 );
 */
 
 function fruitful_btn_shortcode ( $atts, $content = null ) {
-		$out = $size = $color = $type = $state = $text_color = $icon =  $icon_position = $link = $options = "";
+		$out = $size = $color = $type = $state = $text_color = $icon = $icon_position = $link = $options = $target = $target_output = "";
 		extract(shortcode_atts(array(
 									'size'		 	=> 'small',
 									'color' 	 	=> 'primary',
@@ -330,7 +330,8 @@ function fruitful_btn_shortcode ( $atts, $content = null ) {
 									'text_color'	=> '#fff',
 									'icon'		 	=> '',
 									'icon_position' => 'left',
-									'link'			=> '#'
+									'link'			=> '#',
+									'target'		=> ''
 							
 		), $atts));
 		
@@ -345,6 +346,7 @@ function fruitful_btn_shortcode ( $atts, $content = null ) {
 		if (!empty($icon))  		{ $icon = sanitize_html_class($icon); }
 		if (!empty($icon_position)) { $icon_position = sanitize_html_class($icon_position); }
 		if (!empty($link))  		{ $link = esc_url($link); }
+		if (!empty($target))  		{ $target = sanitize_html_class($target); }
 		
 		if (($size == 'mini') || ($size == 'small') || ($size == 'large')) {
 			$options .= ' btn-' . $size;
@@ -366,8 +368,14 @@ function fruitful_btn_shortcode ( $atts, $content = null ) {
 		
 		$content = do_shortcode(fruitful_sh_esc_content_pbr($content));
 		
+		if ($target == '_blank'){
+			$target_output = 'target="_blank"';
+		} else {
+			$target_output = '';
+		}
+		
 		if ($type == 'link') {
-			$out  = '<a href="'.$link.'" class="btn'.$options.'" style="color:'.$text_color.';" target="_blank">';
+			$out  = '<a href="'.$link.'" class="btn'.$options.'" style="color:'.$text_color.';" '.$target_output.'>';
 				if ($icon != '') { 
 					if ($icon_position == 'right') { $out  .= $content; }
 					if ($icon != '') { 
