@@ -121,7 +121,7 @@ function fruitful_info_box ($atts, $content = null) {
 	 
 	 $out .= '<div id="'.$id.'" class="'.$class.' '. $column .' ffs-info-box ' . $icon_position . ' ' . $last . '" >';
 	 if (($link != '') && ($link != '#')) {
-		$out .= '<a href="'.esc_url($link).'">';
+		$out .= '<a href="'.fruitful_sh_esc_link($link).'">';
 	 }
 		if (($image != '') || ($icon != '')) {
 			$out .= '<div class="ffs-icon-box">';
@@ -345,7 +345,7 @@ function fruitful_btn_shortcode ( $atts, $content = null ) {
 		
 		if (!empty($icon))  		{ $icon = sanitize_html_class($icon); }
 		if (!empty($icon_position)) { $icon_position = sanitize_html_class($icon_position); }
-		if (!empty($link))  		{ $link = esc_url($link); }
+		if (!empty($link))  		{ $link = fruitful_sh_esc_link($link); }
 		if (!empty($target))  		{ $target = sanitize_html_class($target); }
 		
 		if (($size == 'mini') || ($size == 'small') || ($size == 'large')) {
@@ -419,4 +419,9 @@ function fruitful_sh_esc_content_pbr($content = null) {
 	 $New     = array( '','' );
 	 $content = str_replace( $Old, $New, $content );
 	 return $content;
+}
+
+function fruitful_sh_esc_link($link){
+	$link = esc_url(str_replace('”','',str_replace('“','',$link)));
+	return $link;
 }
