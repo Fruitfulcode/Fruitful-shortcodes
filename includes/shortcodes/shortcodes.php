@@ -20,11 +20,11 @@
 	
 function fruitful_description_box ($atts, $content = null) {
 	$out = '';
-	shortcode_atts(array(
+	extract(shortcode_atts(array(
 		  'id'		=> '',
 		  'style' 	=> '',
 		  'shadowtype'	=> ''
-     ), $atts, 'fruitful_dbox');
+     ), $atts, 'fruitful_dbox'));
 	
 	$id = 'desc-box-' . rand( 1, 100 );
 	
@@ -56,21 +56,21 @@ add_shortcode ("fruitful_dbox", "fruitful_description_box");
 
 
 function fruitful_ibox_row_shortcode ($atts, $content = null) {
-	 $out = ""; 
-	 shortcode_atts(array(
+	$out = ""; 
+	extract(shortcode_atts(array(
 		  'id'	=> '' 
-     ), $atts, 'fruitful_ibox_row');
+    ), $atts, 'fruitful_ibox_row');
 	 
-	 $id = 'info-box-row-' . rand( 1, 100 );
-	 
-	 if (isset($atts['id'])) { $id = sanitize_html_class($atts['id']); }
-	 
-	 $out .= '<div class="info-box-row clearfix" id="'. $id .'">';
-		$out .=	fruitful_sh_esc_content_pbr(do_shortcode($content));
-	 $out .= '</div>';
-	 $out .= '<div class="clearfix"></div>';
-	 
-	 return $out;
+	$id = 'info-box-row-' . rand( 1, 100 );
+
+	if (isset($atts['id'])) { $id = sanitize_html_class($atts['id']); }
+
+	$out .= '<div class="info-box-row clearfix" id="'. $id .'">';
+	$out .=	fruitful_sh_esc_content_pbr(do_shortcode($content));
+	$out .= '</div>';
+	$out .= '<div class="clearfix"></div>';
+
+	return $out;
 	 
 }
 add_shortcode('fruitful_ibox_row', 'fruitful_ibox_row_shortcode');
@@ -151,7 +151,15 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	$output	    = '';
 	$tab_titles = array();
 	$tabs_class = 'tab_titles';
-	extract(shortcode_atts(array('id' => '', 'type' => '', 'width' => '', 'fit' => '', 'widthtab' => '', 'tabcolor' => '#71AFFF', 'closed' => 'true'), $atts, 'fruitful_tabs'));
+	extract(shortcode_atts( array(
+		'id' => '', 
+		'type' => '', 
+		'width' => '', 
+		'fit' => '', 
+		'widthtab' => '', 
+		'tabcolor' => '#71AFFF', 
+		'closed' => 'true'
+	), $atts, 'fruitful_tabs'));
 	
 	$id 	= 'ffs-tabbed-' . rand( 1, 100 );
 	$type 	= 'default';
@@ -216,13 +224,14 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 add_shortcode('fruitful_tabs', 'fruitful_tabs_shortcode');
 
 function fruitful_tab_shortcode ( $atts, $content = null ) {
-		$defaults = array( 'title' => 'Tab' );
-		extract( shortcode_atts( $defaults, $atts));
-		$class = '';
-		if ( $title != 'Tab' ) {
-			 $class = ' tab-' . sanitize_title( $title );
-		}
-		return '<div class="fruitful_tab' . esc_attr( $class ) . '">' . do_shortcode( $content ) . '</div>';
+	extract(shortcode_atts( array( 
+		'title' => 'Tab' 
+	), $atts));
+	$class = '';
+	if ( $title != 'Tab' ) {
+		 $class = ' tab-' . sanitize_title( $title );
+	}
+	return '<div class="fruitful_tab' . esc_attr( $class ) . '">' . do_shortcode( $content ) . '</div>';
 } 
 add_shortcode( 'fruitful_tab', 'fruitful_tab_shortcode', 99 );
 
@@ -247,10 +256,10 @@ add_shortcode ("fruitful_sep", "fruitful_sep");
 
 function fruitful_alert_shortcode ($atts, $content = null) {
 	$out = $type = '';
-	shortcode_atts(array(
+	extract(shortcode_atts(array(
 		  'id'		=> 'ffs-alert-' . rand( 1, 100 ),
 		  'type'	=> ''
-     ), $atts, 'fss_alert');
+     ), $atts, 'fss_alert'));
 	
 	if (!empty($id))    { $id   = sanitize_html_class($id); }
 	if (!empty($type))  { $type = sanitize_html_class($type); }
@@ -295,16 +304,16 @@ function fruitful_pbar_shortcode ($atts, $content = null) {
 add_shortcode ("fruitful_pbar", "fruitful_pbar_shortcode");
 
 function fruitful_bar_shortcode ( $atts, $content = null ) {
-		$type = $width = '';
-		extract(shortcode_atts(array(
-							'type'	=> '',
-							'width' => '60%'
-		), $atts));
-		
-		if (!empty($type))  { $type = sanitize_html_class($type); }
-		if (!empty($width)) { $width = esc_attr($width); }
-		 
-		return '<div class="bar '.$type.'" style="width: '.$width.';"></div>';
+	$type = $width = '';
+	extract(shortcode_atts(array(
+						'type'	=> '',
+						'width' => '60%'
+	), $atts));
+	
+	if (!empty($type))  { $type = sanitize_html_class($type); }
+	if (!empty($width)) { $width = esc_attr($width); }
+	 
+	return '<div class="bar '.$type.'" style="width: '.$width.';"></div>';
 } 
 add_shortcode( 'fruitful_bar', 'fruitful_bar_shortcode', 99 );
 
