@@ -59,7 +59,7 @@ function fruitful_ibox_row_shortcode ($atts, $content = null) {
 	$out = ""; 
 	extract(shortcode_atts(array(
 		  'id'	=> '' 
-    ), $atts, 'fruitful_ibox_row');
+    ), $atts, 'fruitful_ibox_row'));
 	 
 	$id = 'info-box-row-' . rand( 1, 100 );
 
