@@ -184,7 +184,7 @@ h2.resp-accordion:first-child {
         min-height: initial;
         clear: none;
     }
-    .resp-accordion-closed {
+    .ffs-tabbed-nav:not(.resp-easy-accordion) .resp-accordion-closed {
         display:none !important;
     }
     .resp-vtabs .resp-tab-content:last-child {
