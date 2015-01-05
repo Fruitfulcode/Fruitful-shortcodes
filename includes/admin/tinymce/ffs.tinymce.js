@@ -219,7 +219,7 @@
                 title : 'Add alert',  
                 image : url+'/alert.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[fruitful_alert type="alert-block"]Oh snap! Change a few things up and try submitting again.[/fruitful_alert]');  
+                     ed.selection.setContent('[fruitful_alert type="alert-success"]Oh snap! Change a few things up and try submitting again.[/fruitful_alert]');  
                 }  
             });  
         },  
@@ -242,7 +242,7 @@
                 title :  'Add progress bar',  
                 image : url+'/progressbar.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[fruitful_pbar][fruitful_bar type="bar-success" width="60%"][/fruitful_bar][/fruitful_pbar]');  
+                     ed.selection.setContent('[fruitful_pbar stripped="false"][fruitful_bar type="progress-bar-success" width="60%" stripped="false" active="false"][/fruitful_bar][/fruitful_pbar]');  
                 }  
             });  
         },  

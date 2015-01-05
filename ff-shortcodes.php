@@ -78,4 +78,3 @@ class ffs {
 }
 
 $ffs = new ffs();
-?>

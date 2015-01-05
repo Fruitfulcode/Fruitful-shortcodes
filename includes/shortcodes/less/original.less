@@ -31,51 +31,23 @@
 .ffs-six-four		{width:65.33%;}
 .ffs-six-five		{width:82.67%;}
 
-.ffs-two-one,
-.ffs-three-one,
-.ffs-three-two,
-.ffs-four-one,
-.ffs-four-two,
-.ffs-four-three,
-.ffs-five-one,
-.ffs-five-two,
-.ffs-five-three,
-.ffs-five-four,
-.ffs-six-one,
-.ffs-six-two,
-.ffs-six-three,
-.ffs-six-four,
-.ffs-six-five{
-	float:left;
-	margin-right:4%;
-	margin-bottom:4%;
-	position:relative;
+.ffs-two-one, .ffs-three-one, .ffs-three-two, .ffs-four-one, .ffs-four-two, .ffs-four-three, .ffs-five-one, .ffs-five-two, .ffs-five-three, .ffs-five-four, .ffs-six-one, .ffs-six-two, .ffs-six-three, .ffs-six-four, .ffs-six-five{
+  float:left;
+  margin-right:4%;
+  margin-bottom:4%;
+  position:relative;
 }
 
 .last{
-	clear:right;
-	margin-right:0 !important;
+  clear:right;
+  margin-right:0 !important;
 }
 
 @media only screen and (max-width: 768px) {
-	.ffs-two-one,
-	.ffs-three-one,
-	.ffs-three-two,
-	.ffs-four-one,
-	.ffs-four-two,
-	.ffs-four-three,
-	.ffs-five-one,
-	.ffs-five-two,
-	.ffs-five-three,
-	.ffs-five-four,
-	.ffs-six-one,
-	.ffs-six-two,
-	.ffs-six-three,
-	.ffs-six-four,
-	.ffs-six-five {
-		margin-right: 0; 
-		width: 100% !important;
-	}
+  .ffs-two-one, .ffs-three-one, .ffs-three-two, .ffs-four-one, .ffs-four-two, .ffs-four-three, .ffs-five-one, .ffs-five-two, .ffs-five-three, .ffs-five-four, .ffs-six-one, .ffs-six-two, .ffs-six-three, .ffs-six-four, .ffs-six-five {
+	  margin-right: 0; 
+	  width: 100% !important;
+  }
 }
 
 
@@ -163,49 +135,48 @@
 /*-------------------------------------------------------------------------------------------*/
 
 .fruitful_description_box {
-	position:relative;
-	z-index:0;
+  position:relative;
+  z-index:0;
 }
 
 .fruitful_description {
-    float:left;
-    width:100%;
-    min-height:50px;
-    margin:10px 0 20px 0;
-	position:relative;       
-	display:block;
-	background:#fff;
+  float:left;
+  width:100%;
+  min-height:50px;
+  margin:10px 0 20px 0;
+  position:relative;       
+  display:block;
+  background:#fff;
 }
-
 
 .fruitful_description.shadow-type-4:before ,
 .fruitful_description.shadow-type-5:before  {
-	position: absolute;
-    width: 80%;
-    height: 45%;
-    left: 10%;
-    border-radius: 50%;
-    z-index: -1;
-    top: 0%;
-    content: "";
-	-moz-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
-    -webkit-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
-    box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
+  position: absolute;
+  width: 80%;
+  height: 45%;
+  left: 10%;
+  border-radius: 50%;
+  z-index: -1;
+  top: 0%;
+  content: "";
+  -moz-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
 }
 
 .fruitful_description.shadow-type-4:after,
 .fruitful_description.shadow-type-5:after  {
-	position: absolute;
-    width: 80%;
-    height: 45%;
-    left: 10%;
-	border-radius: 50%;
-	z-index: -1;
-	bottom: 0%;
-	content: "";
-	-moz-box-shadow: 0 2px 16px rgba(0,0,0,0.4);
-    -webkit-box-shadow: 0 2px 16px rgba(0,0,0,0.4);
-    box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+ position: absolute;
+  width: 80%;
+  height: 45%;
+  left: 10%;
+  border-radius: 50%;
+  z-index: -1;
+  bottom: 0%;
+  content: "";
+  -moz-box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.4);
 }	  
 
 
@@ -215,34 +186,35 @@
 }
 
 .fruitful_description.shadow-type-1 .top_line{
-	z-index: 2;
-	display: block;
-	width: 100%;
-	height: 15px;
-	overflow: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 15px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
+
 .fruitful_description.shadow-type-1 .top_line:before,
 .fruitful_description.shadow-type-1 .top_line:after{
-	z-index: 1;
-	position: absolute;
-	content: "";
-	top: -20px;
-	left: 10px;
-	width: 50%;
-	bottom: 31px;
-	max-width: 300px;
-	background: #777;
-	-webkit-box-shadow: 0 13px 16px #777;
-	-moz-box-shadow: 0 13px 16px #777;
-	box-shadow: 0 13px 16px #777;
-	-webkit-transform: rotate(-1.5deg);
-	-moz-transform: rotate(-1.5deg);
-	-o-transform: rotate(-1.5deg);
-	-ms-transform: rotate(-1.5deg);
-	transform: rotate(-1.5deg);
+  z-index: 1;
+  position: absolute;
+  content: "";
+  top: -20px;
+  left: 10px;
+  width: 50%;
+  bottom: 31px;
+  max-width: 300px;
+  background: #777;
+  -webkit-box-shadow: 0 13px 16px #777;
+  -moz-box-shadow: 0 13px 16px #777;
+  box-shadow: 0 13px 16px #777;
+  -webkit-transform: rotate(-1.5deg);
+  -moz-transform: rotate(-1.5deg);
+  -o-transform: rotate(-1.5deg);
+  -ms-transform: rotate(-1.5deg);
+  transform: rotate(-1.5deg);
 }
 
 .fruitful_description.shadow-type-1 .top_line:after{
@@ -256,34 +228,34 @@
 }
 
 .fruitful_description.shadow-type-1 .bottom_line{
-	z-index: 2;
-	display: block;
-	width: 100%;
-	height: 15px;
-	overflow: hidden;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 15px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .fruitful_description.shadow-type-1 .bottom_line:before,
 .fruitful_description.shadow-type-1 .bottom_line:after{
-	z-index: 1;
-	position: absolute;
-	content: "";
-	top: 31px;
-	left: 10px;
-	width: 50%;
-	bottom: -20px;
-	max-width: 300px;
-	background: #777;
-	-webkit-box-shadow: 0 -13px 16px #777;
-	box-shadow: 0 -13px 16px #777;
-	-webkit-transform: rotate(1.5deg);
-	-moz-transform: rotate(1.5deg);
-	-o-transform: rotate(1.5deg);
-	-ms-transform: rotate(1.5deg);
-	transform: rotate(1.5deg);
+  z-index: 1;
+  position: absolute;
+  content: "";
+  top: 31px;
+  left: 10px;
+  width: 50%;
+  bottom: -20px;
+  max-width: 300px;
+  background: #777;
+  -webkit-box-shadow: 0 -13px 16px #777;
+  box-shadow: 0 -13px 16px #777;
+  -webkit-transform: rotate(1.5deg);
+  -moz-transform: rotate(1.5deg);
+  -o-transform: rotate(1.5deg);
+  -ms-transform: rotate(1.5deg);
+  transform: rotate(1.5deg);
 }
 
 .fruitful_description.shadow-type-1 .bottom_line:after{
@@ -298,78 +270,79 @@
 
 .fruitful_description.shadow-type-2:before,
 .fruitful_description.shadow-type-2:after {
-	display:none;
+  display:none;
 }
 
 .fruitful_description.shadow-type-2 .top_line{
-	position: absolute;
-	width: 100%;
-	height: 10px;
-	overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
 }
 .fruitful_description.shadow-type-2 .top_line:before{
-	position: absolute;
-	width: 50%;
-	height: 45%;
-	overflow: hidden;
-	left: 25%;
-	border-radius: 50%;
-	z-index: 1;
-	top: -38%;
-	content: "";
-	-moz-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
-	-webkit-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
-	box-shadow: 0 0px 16px rgba(0,0,0,0.4);
+  position: absolute;
+  width: 50%;
+  height: 45%;
+  overflow: hidden;
+  left: 25%;
+  border-radius: 50%;
+  z-index: 1;
+  top: -38%;
+  content: "";
+  -moz-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 0px 16px rgba(0,0,0,0.4);
 }
 
 .fruitful_description.shadow-type-2 .bottom_line{
-	position: absolute;
-	width: 100%;
-	height: 10px;
-	overflow: hidden;
-	bottom: 0px;
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  bottom: 0px;
 }
+
 .fruitful_description.shadow-type-2 .bottom_line:before{
-	position: absolute;
-	width: 50%;
-	height: 45%;
-	overflow: hidden;
-	left: 25%;
-	border-radius: 50%;
-	z-index: 1;
-	top: 100%;
-	content: "";
-	-moz-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
-	-webkit-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
-	box-shadow: 0 0 16px rgba(0,0,0,0.4);
+  position: absolute;
+  width: 50%;
+  height: 45%;
+  overflow: hidden;
+  left: 25%;
+  border-radius: 50%;
+  z-index: 1;
+  top: 100%;
+  content: "";
+  -moz-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 -2px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 0 16px rgba(0,0,0,0.4);
 }
 
 .fruitful_description.shadow-type-3:before,
 .fruitful_description.shadow-type-3:after {
-	display:none; 
+  display:none; 
 }
 
 .fruitful_description.shadow-type-3 .top_line:before,
 .fruitful_description.shadow-type-3 .top_line:after,
 .fruitful_description.shadow-type-5 .top_line:before,
 .fruitful_description.shadow-type-5 .top_line:after{
-	z-index: -1;
-	position: absolute;
-	content: "";
-	top: 15px;
-	left: 10px;
-	width: 50%;
-	bottom: 80%;
-	max-width: 300px;
-	min-height:4px;
-	background: #777;
-	-webkit-box-shadow: 0 -13px 16px #777;
-	box-shadow: 0 -13px 16px #777;
-	-webkit-transform: rotate(3deg);
-	-moz-transform: rotate(3deg);
-	-o-transform: rotate(3deg);
-	-ms-transform: rotate(3deg);
-	transform: rotate(3deg);
+  z-index: -1;
+  position: absolute;
+  content: "";
+  top: 15px;
+  left: 10px;
+  width: 50%;
+  bottom: 80%;
+  max-width: 300px;
+  min-height:4px;
+  background: #777;
+  -webkit-box-shadow: 0 -13px 16px #777;
+  box-shadow: 0 -13px 16px #777;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
 }
 
 .fruitful_description.shadow-type-3 .top_line:after,
@@ -430,6 +403,17 @@
 	margin: 0 0 30px;
 }
 
+/*Bootstrap fixed*/
+button.close {
+	-webkit-appearance: none;
+	padding: 0;
+	cursor: pointer;
+	background: 0 0 !important;
+	border: 0;
+	float: right;
+}
+
 @media only screen and (max-width: 480px) {
 	.fruitful_description .text{font-size:20px !important;}
 }
+
