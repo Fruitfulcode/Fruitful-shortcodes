@@ -152,13 +152,13 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	$tab_titles = array();
 	$tabs_class = 'tab_titles';
 	extract(shortcode_atts( array(
-		'id' => '', 
-		'type' => '', 
-		'width' => '', 
-		'fit' => '', 
-		'widthtab' => '', 
-		'tabcolor' => '#71AFFF', 
-		'closed' => 'true'
+		'id' 		=> '', 
+		'type' 		=> '', 
+		'width' 	=> '', 
+		'fit' 		=> '', 
+		'widthtab' 	=> '', 
+		'tabcolor' 	=> '#71AFFF', 
+		'closed' 	=> 'true'
 	), $atts, 'fruitful_tabs'));
 	
 	$id 	= 'ffs-tabbed-' . rand( 1, 100 );
@@ -176,22 +176,26 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 	if (isset($atts['tabcolor'])) 	{ $tabcolor  = esc_html($atts['tabcolor']); }
 	if (isset($atts['closed'])) 	{ $closed  	 = esc_html($atts['closed']); }
 	
+	
+	
 	$output .= '<script type="text/javascript"> ';
 		$output .= 'jQuery(document).ready(function() { ';
 			$output .= 'jQuery("#'.$id.'").easyResponsiveTabs({ ';
 			$output .= '    type: 	"'.$type.'", ';
-			$output .= '    width: "'.$width.'", ';
-			$output .= '    fit: 	'.$fit;
+			$output .= '    width:  "'.$width.'", ';
+			$output .= '    fit: 	 '.$fit;
 			$output .= '}); ';
 			$output .= 'var cont_width = jQuery("#'.$id.'.resp-vtabs").outerWidth() - jQuery("#'.$id.'.resp-vtabs .resp-tabs-list").outerWidth() - 3;';
 			$output .= 'jQuery("#'.$id.'.resp-vtabs .resp-tabs-container").css({"width":cont_width});';
 		$output .= '}); ';
 	$output .= '</script>';
-	$output .= '<style>'."\n";
+	$output .= '<style type="text/css">'."\n";
 		$output .= '#'.$id.' li.resp-tab-active,'."\n";
-		$output .= '#'.$id.' .resp-tabs-list li:hover{border-top-color:'.$tabcolor.'; border-bottom-color:'.$tabcolor.';}'."\n";
+		$output .= '#'.$id.'.resp-tabs-list li:hover{border-top-color:'.$tabcolor.'; border-bottom-color:'.$tabcolor.';}'."\n";
 		$output .= '#'.$id.'.resp-vtabs li.resp-tab-active,'."\n";
 		$output .= '#'.$id.'.resp-vtabs .resp-tabs-list li:hover{border-left-color:'.$tabcolor.'; border-top-color:#C1C1C1; border-right-color:'.$tabcolor.';  border-bottom-color:#C1C1C1;}'."\n";
+		if ($type == 'accordion')
+		$output .= '#'.$id.'.ffs-tabbed-nav h2.resp-accordion.resp-tab-active {background:none repeat scroll 0 0 '.$tabcolor.' !important;}'."\n";
 	$output .= '</style>';
 	
 	preg_match_all( '/tab title="([^\"]+)"/i', $content, $matches, PREG_OFFSET_CAPTURE );
