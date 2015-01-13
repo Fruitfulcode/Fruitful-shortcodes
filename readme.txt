@@ -3,8 +3,8 @@ Contributors: fruitfulcode
 Donate link: http://fruitfulcode.com
 Tags: admin, fruitful, shortcode, shortcodes, short code, editor, content, bootstrap, post, page, tab, tabs, horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button
 Requires at least: 3.4.1
-Tested up to: 4.0
-Stable tag: 1.2.1
+Tested up to: 4.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,17 @@ You can check <a href="http://support.fruitfulcode.com/hc/en-us/sections/2004063
 
 == Changelog ==
 
+= 1.3 =
+Release Date: 13.01.2015
+
+* Bugfixes
+	* Fix extract attributes for alert, description, row
+	* Accordion tabs for mobile
+
+* Updates
+	* Bootstrap to latest version
+	* Less css added
+
 = 1.2.1 = 
 Release Date: 19.09.2014
 
@@ -99,7 +110,7 @@ Release Date: 06.08.2014
 * Bugfixes
 	* Shortcode promo text: shawow type 
 	* Promo text size responsive
-	* Removed styles for content <p>
+	* Removed styles for paragraph
 
 
 = 1.1 =
