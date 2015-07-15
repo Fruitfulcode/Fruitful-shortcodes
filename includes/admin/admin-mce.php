@@ -40,7 +40,8 @@
 					'fruitful_sep', 
 					'fruitful_alerts', 
 					'fruitful_pbar',
-					'fruitful_btn'
+					'fruitful_btn',
+					'fruitful_recent_posts'
 					);  
 		return $buttons;
 	}
@@ -60,6 +61,7 @@
 		$plugin_array['fruitful_alerts'] 	= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
 		$plugin_array['fruitful_pbar'] 		= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
 		$plugin_array['fruitful_btn'] 		= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
+		$plugin_array['fruitful_recent_posts'] 		= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';		
 		
 	
 		return $plugin_array;

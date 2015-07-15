@@ -274,3 +274,24 @@
     });  
     tinymce.PluginManager.add('fruitful_btn', tinymce.plugins.fruitful_btn);  
 })();
+
+/*-----------------------------------------------------------------------------------*/
+/*	ffs TinyMCE "Recent posts" Button
+/*-----------------------------------------------------------------------------------*/
+(function() {  
+    tinymce.create('tinymce.plugins.fruitful_recent_posts', {  
+        init : function(ed, url) {  
+            ed.addButton('fruitful_recent_posts', {  
+                title :  'Add recent posts',  
+                image : url+'/recent_news.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[fruitful_recent_posts]');  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('fruitful_recent_posts', tinymce.plugins.fruitful_recent_posts);  
+})();
