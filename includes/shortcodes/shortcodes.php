@@ -491,7 +491,7 @@ function fruitful_recent_posts(){
 				$the_category = get_the_category_list( ', ', 'fruitful' );
 				$tags_list = get_the_tag_list( '', __( ', ', 'fruitful' ) );
 		
-		$out1 .= '<article id="post-'.$the_ID.'" class="blog_post '.implode(' ', $post_class).'">';
+		$out1 .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
 		
 			$out1 .= '<a href="'.$the_permalink.'" rel="bookmark">
 				<div class="date_of_post updated">
@@ -571,7 +571,7 @@ function fruitful_recent_posts_slider(){
 				$tags_list = get_the_tag_list( '', __( ', ', 'fruitful' ) );
 		
 		$out1 .= '<li>';
-		$out1 .= '<article id="post-'.$the_ID.'" class="blog_post '.implode(' ', $post_class).'">';
+		$out1 .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
 		
 			$out1 .= '<a href="'.$the_permalink.'" rel="bookmark">
 				<div class="date_of_post updated">

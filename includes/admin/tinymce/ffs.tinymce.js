@@ -304,7 +304,7 @@
         init : function(ed, url) {  
             ed.addButton('fruitful_recent_posts_slider', {  
                 title :  'Add recent posts slider',  
-                image : url+'/recent_news.png',  
+                image : url+'/recent_news_slider.png',  
                 onclick : function() {  
                      ed.selection.setContent('[fruitful_recent_posts_slider]');  
                 }  
