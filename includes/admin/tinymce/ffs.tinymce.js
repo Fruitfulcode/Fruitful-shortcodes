@@ -295,3 +295,24 @@
     });  
     tinymce.PluginManager.add('fruitful_recent_posts', tinymce.plugins.fruitful_recent_posts);  
 })();
+
+/*-----------------------------------------------------------------------------------*/
+/*	ffs TinyMCE "Recent posts slider" Button
+/*-----------------------------------------------------------------------------------*/
+(function() {  
+    tinymce.create('tinymce.plugins.fruitful_recent_posts_slider', {  
+        init : function(ed, url) {  
+            ed.addButton('fruitful_recent_posts_slider', {  
+                title :  'Add recent posts slider',  
+                image : url+'/recent_news.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[fruitful_recent_posts_slider]');  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('fruitful_recent_posts_slider', tinymce.plugins.fruitful_recent_posts_slider);  
+})();
