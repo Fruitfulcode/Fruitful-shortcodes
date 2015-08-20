@@ -42,7 +42,8 @@
 					'fruitful_pbar',
 					'fruitful_btn',
 					'fruitful_recent_posts',
-					'fruitful_recent_posts_slider'
+					'fruitful_recent_posts_slider',
+                    'fruitful_recent_posts_columns'
 					);  
 		return $buttons;
 	}
@@ -63,10 +64,10 @@
 		$plugin_array['fruitful_pbar'] 		= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
 		$plugin_array['fruitful_btn'] 		= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
 		$plugin_array['fruitful_recent_posts'] 		= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';		
-		$plugin_array['fruitful_recent_posts_slider'] 		= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';		
-		
-	
-		return $plugin_array;
+		$plugin_array['fruitful_recent_posts_slider'] 		= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
+        $plugin_array['fruitful_recent_posts_columns'] 		= plugins_url('/tinymce', __FILE__) . '/ffs.tinymce.js';
+
+        return $plugin_array;
 	}
 
 	foreach( array('post.php','post-new.php') as $hook ) add_action( "admin_head-$hook", 'fruitful_admin_head' );

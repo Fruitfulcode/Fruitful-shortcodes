@@ -15,7 +15,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_horizontal_tabs', tinymce.plugins.fruitful_horizontal_tabs);  
 })();
@@ -34,7 +34,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_vertical_tabs', tinymce.plugins.fruitful_vertical_tabs);  
 })();
@@ -54,7 +54,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_accordion_tabs', tinymce.plugins.fruitful_accordion_tabs);  
 })();
@@ -76,7 +76,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_dbox', tinymce.plugins.fruitful_dbox);  
 })();
@@ -98,7 +98,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_one_half_column', tinymce.plugins.fruitful_one_half_column);  
 	
@@ -115,7 +115,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_one_third_column', tinymce.plugins.fruitful_one_third_column);  
 	
@@ -131,7 +131,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_two_third_column', tinymce.plugins.fruitful_two_third_column);  
 	
@@ -147,7 +147,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_one_fourth_column', tinymce.plugins.fruitful_one_fourth_column);  
 	
@@ -179,7 +179,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_one_fifth_column', tinymce.plugins.fruitful_one_fifth_column);  
 })();
@@ -202,7 +202,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_sep', tinymce.plugins.fruitful_sep);  
 })();
@@ -225,7 +225,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_alerts', tinymce.plugins.fruitful_alerts);  
 })();
@@ -248,7 +248,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_pbar', tinymce.plugins.fruitful_pbar);  
 })();
@@ -270,7 +270,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_btn', tinymce.plugins.fruitful_btn);  
 })();
@@ -291,7 +291,7 @@
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
     tinymce.PluginManager.add('fruitful_recent_posts', tinymce.plugins.fruitful_recent_posts);  
 })();
@@ -300,19 +300,40 @@
 /*	ffs TinyMCE "Recent posts slider" Button
 /*-----------------------------------------------------------------------------------*/
 (function() {  
-    tinymce.create('tinymce.plugins.fruitful_recent_posts_slider', {  
+    tinymce.create('tinymce.plugins.fruitful_recent_posts_slider', {
         init : function(ed, url) {  
-            ed.addButton('fruitful_recent_posts_slider', {  
+            ed.addButton('fruitful_recent_posts_slider', {
                 title :  'Add recent posts slider',  
-                image : url+'/recent_news_slider.png',  
+                image : url+'/recent_news_slider.png',
                 onclick : function() {  
-                     ed.selection.setContent('[fruitful_recent_posts_slider]');  
+                     ed.selection.setContent('[fruitful_recent_posts_slider]');
                 }  
             });  
         },  
         createControl : function(n, cm) {  
             return null;  
-        },  
+        }
     });  
-    tinymce.PluginManager.add('fruitful_recent_posts_slider', tinymce.plugins.fruitful_recent_posts_slider);  
+    tinymce.PluginManager.add('fruitful_recent_posts_slider', tinymce.plugins.fruitful_recent_posts_slider);
+})();
+
+/*-----------------------------------------------------------------------------------*/
+/*	ffs TinyMCE "Recent posts columns" Button
+ /*-----------------------------------------------------------------------------------*/
+(function() {
+    tinymce.create('tinymce.plugins.fruitful_recent_posts_columns', {
+        init : function(ed, url) {
+            ed.addButton('fruitful_recent_posts_columns', {
+                title :  'Add recent posts columns',
+                image : url+'/blog.png',
+                onclick : function() {
+                    ed.selection.setContent('[fruitful_recent_posts_columns count=10 columns=2]');
+                }
+            });
+        },
+        createControl : function(n, cm) {
+            return null;
+        }
+    });
+    tinymce.PluginManager.add('fruitful_recent_posts_columns', tinymce.plugins.fruitful_recent_posts_columns);
 })();

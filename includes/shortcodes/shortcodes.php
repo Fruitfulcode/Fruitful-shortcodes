@@ -538,64 +538,64 @@ add_shortcode ("fruitful_recent_posts", "fruitful_recent_posts");
 
 
 function fruitful_recent_posts_slider(){
-		//Add FlexSlider
-		wp_enqueue_style( 'flex-slider', 			get_template_directory_uri() . '/js/flex_slider/slider.css');
-		wp_enqueue_script('flex-fitvid-j',			get_template_directory_uri() . '/js/flex_slider/jquery.flexslider-min.js', array( 'jquery' ), '20130930', false );
-		wp_enqueue_script('flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/slider_init.js', array( 'jquery' ));
-		
-		
-		$args=array(
-			'orderby'    	=> 'modified',
-			'order'			=> 'DESC',
-			'post_type'   	=> 'post',
-			'post_status'   => 'publish',
-			'posts_per_page'=> 4,
-		);
-		$my_query = new WP_Query($args);
-		if( $my_query->have_posts() ) {
-		$out1 = "";
-		$out1 .= '<h1>Chosen posts</h1>		
+    //Add FlexSlider
+    wp_enqueue_style( 'flex-slider', 			get_template_directory_uri() . '/js/flex_slider/slider.css');
+    wp_enqueue_script('flex-fitvid-j',			get_template_directory_uri() . '/js/flex_slider/jquery.flexslider-min.js', array( 'jquery' ), '20130930', false );
+    wp_enqueue_script('flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/slider_init.js', array( 'jquery' ));
+
+
+    $args=array(
+        'orderby'    	=> 'modified',
+        'order'			=> 'DESC',
+        'post_type'   	=> 'post',
+        'post_status'   => 'publish',
+        'posts_per_page'=> 4,
+    );
+    $my_query = new WP_Query($args);
+    if( $my_query->have_posts() ) {
+        $out1 = "";
+        $out1 .= '<h1>Chosen posts</h1>
 		<div class="flexslider">
 		<ul class="slides">';
-		while ($my_query->have_posts()) : $my_query->the_post(); 
-				$day 		 = get_the_date('d'); 
-				$month_abr = get_the_date('M');
-				$the_ID = get_the_ID();
-				$post_class = get_post_class();
-				$the_permalink = get_the_permalink();
-				$title = esc_attr( sprintf( __( 'Permalink to %s', 'fruitful' ), the_title_attribute( 'echo=0' ) ) );
-				$the_title = get_the_title();
-				$the_post_thumbnail = get_the_post_thumbnail();
-				$the_excerpt = get_the_excerpt();
-				$the_category = get_the_category_list( ', ', 'fruitful' );
-				$tags_list = get_the_tag_list( '', __( ', ', 'fruitful' ) );
-		
-		$out1 .= '<li>';
-		$out1 .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
-		
-			$out1 .= '<a href="'.$the_permalink.'" rel="bookmark">
+        while ($my_query->have_posts()) : $my_query->the_post();
+            $day 		 = get_the_date('d');
+            $month_abr = get_the_date('M');
+            $the_ID = get_the_ID();
+            $post_class = get_post_class();
+            $the_permalink = get_the_permalink();
+            $title = esc_attr( sprintf( __( 'Permalink to %s', 'fruitful' ), the_title_attribute( 'echo=0' ) ) );
+            $the_title = get_the_title();
+            $the_post_thumbnail = get_the_post_thumbnail();
+            $the_excerpt = get_the_excerpt();
+            $the_category = get_the_category_list( ', ', 'fruitful' );
+            $tags_list = get_the_tag_list( '', __( ', ', 'fruitful' ) );
+
+            $out1 .= '<li>';
+            $out1 .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
+
+            $out1 .= '<a href="'.$the_permalink.'" rel="bookmark">
 				<div class="date_of_post updated">
 					<span class="day_post">'.$day.'</span>
 					<span class="month_post">'.$month_abr.'</span>
 				</div>
 			</a>';
-		
-		$out1 .= '<div class="post-content">	
+
+            $out1 .= '<div class="post-content">
 		<header class="post-header">
 			<h2 class="post-title entry-title">
 				<a href="'.$the_permalink.'" title="'.$title.'" rel="bookmark">'.$the_title.'</a>
 			</h2>
 		</header><!-- .entry-header -->';
 
-		$out1 .= '<div class="entry-content">';
-		if ( has_post_thumbnail() && ! post_password_required() ) :
-					$out1 .='<div class="entry-thumbnail">'
-						.$the_post_thumbnail.
-					'</div>';
-		endif;
-			$out1 .= $the_excerpt.
-		'</div><!-- .entry-content -->';
-		$out1 .= '<footer class="entry-meta">
+            $out1 .= '<div class="entry-content">';
+            if ( has_post_thumbnail() && ! post_password_required() ) :
+                $out1 .='<div class="entry-thumbnail">'
+                    .$the_post_thumbnail.
+                    '</div>';
+            endif;
+            $out1 .= $the_excerpt.
+                '</div><!-- .entry-content -->';
+            $out1 .= '<footer class="entry-meta">
 			<span class="author-link author"><a href="'.esc_url( get_author_posts_url( get_the_author_meta( 'ID' ))).'">'.get_the_author().'</a></span>
 			<span class="cat-links">
 			Posted in '.$the_category.'
@@ -603,16 +603,132 @@ function fruitful_recent_posts_slider(){
 			<span class="tag-links">
 			'.$tags_list.'
 		</span> ';
-		$out1 .= '</footer>
+            $out1 .= '</footer>
 		</div>
 	</article></li>';
-		endwhile;
-		$out1 .= '</ul>';
-		$out1 .= '</div>';
-		$out1 .= '<div class="clearfix"></div>';
-	}
-		return $out1;
+        endwhile;
+        $out1 .= '</ul>';
+        $out1 .= '</div>';
+        $out1 .= '<div class="clearfix"></div>';
+    }
+    return $out1;
     wp_reset_query();
 }
 
 add_shortcode ("fruitful_recent_posts_slider", "fruitful_recent_posts_slider");
+
+function fruitful_recent_posts_columns ( $atts, $content = null ) {
+    $out = $count = $columns = $show_date = $show_comments = $show_tags = $show_description = "";
+    extract(shortcode_atts(array(
+        'count'		 	 => 10,
+        'columns' 	 	 => 2,
+        'show_date'		 => 1,
+        'show_comments'	 => 1,
+        'show_tags'=> 1,
+        'show_description'=>0,
+    ), $atts));
+
+    $class = "ffs-two-one";
+    switch ($columns){
+        case 1:
+            $class = "info-box-row";
+            break;
+        case 3:
+            $class = "ffs-three-one";
+            break;
+        case 4:
+            $class = "ffs-four-one";
+            break;
+        case 5:
+            $class = "ffs-five-one";
+            break;
+    }
+    $args=array(
+        'orderby'    	=> 'modified',
+        'order'			=> 'DESC',
+        'post_type'   	=> 'post',
+        'post_status'   => 'publish',
+        'posts_per_page'=> $count,
+    );
+    $my_query = new WP_Query($args);
+    $counter = 0;
+    $tags_list = "";
+    if( $my_query->have_posts() ) {
+        while ($my_query->have_posts()) : $my_query->the_post();
+
+            $date = get_the_date(__('j F Y, H:i', 'fruitful'));
+            $the_ID = get_the_ID();
+            $post_class = get_post_class();
+            $the_permalink = get_the_permalink();
+            $title = esc_attr( sprintf( __( 'Permalink to %s', 'fruitful' ), the_title_attribute( 'echo=0' ) ) );
+            $the_title = get_the_title();
+            $the_post_thumbnail = get_the_post_thumbnail();
+            $the_excerpt = '<p>'.get_the_excerpt().'</p>';
+            $comments = get_comments_number();
+            $tag = get_the_tag_list( '', '');
+            if (!empty($tag))
+                $tags_list .= get_the_tag_list( '', ';').';';
+
+            if ($counter%$columns == 0)
+                $out .= '<div class="info-box-row shortcode_recent">';
+            $lastclass = '';
+            if (($counter+1)%$columns == 0)
+                $lastclass = " last";
+            $out .='<div class="'.$class.$lastclass.'">';
+            $out .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
+
+            $out .= '<div class="post-content">';
+            if ( has_post_thumbnail() && ! post_password_required()) :
+                $out .= $the_post_thumbnail;
+            endif;
+            $out .= '<div class="entry-content">';
+            $out .= '<header>
+				<h3><a href="'.$the_permalink.'" title="'.$title.'" rel="bookmark">'.$the_title.'</a></h3>
+		    </header><!-- .entry-header -->';
+            if ($show_comments)
+                $out .='<a href="'.$the_permalink.'" title="'.$title.'" > <span class="comments">'.$comments.' '.__( 'comments', 'fruitful').'</span></a>';
+            if ($show_description)
+                $out .= $the_excerpt;
+            if ($show_date)
+            $out .= '<div class="date">'.$date.'</div>';
+
+
+
+            $out .= '</div></article></div>';
+
+        $counter++;
+        if ($counter%$columns == 0)
+            $out .= '</div>';
+
+
+        endwhile;
+        $out .= '<div class="clearfix">';
+        $out .= '</div>';
+        if ($show_tags){
+            if (!empty($tags_list)){
+                $sortedtags = explode(';', $tags_list);
+
+                // Sort array
+                asort($sortedtags);
+
+                // Remove duplicates from array
+                $sortedtags = array_unique($sortedtags);
+
+                // Remove the blank entry due to get_the_tag_list
+                $sortedtags = array_values( array_filter($sortedtags) );
+                $out .= '<footer class="tags">';
+                foreach ($sortedtags as $key=>$tagname) {
+                    $out .= $tagname;
+                    if ($key!=count($sortedtags)-1)
+                        $out .= '<i> / </i>';
+                }
+                $out .= '</footer>';
+            }
+
+        }
+    }
+    return $out;
+    wp_reset_query();
+}
+
+add_shortcode ("fruitful_recent_posts_columns", "fruitful_recent_posts_columns");

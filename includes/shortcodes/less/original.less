@@ -45,7 +45,7 @@
 
 @media only screen and (max-width: 768px) {
   .ffs-two-one, .ffs-three-one, .ffs-three-two, .ffs-four-one, .ffs-four-two, .ffs-four-three, .ffs-five-one, .ffs-five-two, .ffs-five-three, .ffs-five-four, .ffs-six-one, .ffs-six-two, .ffs-six-three, .ffs-six-four, .ffs-six-five {
-	  margin-right: 0; 
+	  margin-right: 0;
 	  width: 100% !important;
   }
 }
@@ -93,13 +93,13 @@
 	width:100%;
 }
 
-.ffs-info-box.left .ffs-icon-box, 
+.ffs-info-box.left .ffs-icon-box,
 .ffs-info-box.right .ffs-icon-box {
 	width:20%;
 	display:block;
 }
 
-.ffs-info-box.left .ffs-content-box, 
+.ffs-info-box.left .ffs-content-box,
 .ffs-info-box.right .ffs-content-box {
 	width:80%;
 	display:block;
@@ -144,7 +144,7 @@
   width:100%;
   min-height:50px;
   margin:10px 0 20px 0;
-  position:relative;       
+  position:relative;
   display:block;
   background:#fff;
 }
@@ -177,12 +177,12 @@
   -moz-box-shadow: 0 2px 16px rgba(0,0,0,0.4);
   -webkit-box-shadow: 0 2px 16px rgba(0,0,0,0.4);
   box-shadow: 0 2px 16px rgba(0,0,0,0.4);
-}	  
+}
 
 
 .fruitful_description.shadow-type-1:before,
 .fruitful_description.shadow-type-1:after {
-	display:none; 
+	display:none;
 }
 
 .fruitful_description.shadow-type-1 .top_line{
@@ -319,7 +319,7 @@
 
 .fruitful_description.shadow-type-3:before,
 .fruitful_description.shadow-type-3:after {
-  display:none; 
+  display:none;
 }
 
 .fruitful_description.shadow-type-3 .top_line:before,
@@ -421,10 +421,52 @@ button.close {
 }
 
 .resp-arrow {
-  margin-top:8px;
+  margin-top: 8px;
 }
+.shortcode_recent {
+  margin: 5px 0;
+  &>div{
+    margin-bottom: 0;
+  }
+  .post-content{
+    width: 100%;
+  }
+  .blog_post .post-content .entry-content{
+    padding-top: 0;
+  }
+  .comments{
+    font-size: 0.9em;
+    &:before{
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 5px;
+      vertical-align: middle;
+      background: url("../../admin/tinymce/comments.png");
+    }
+  }
+  footer{
+    padding: 0 4%;
+  }
+  img{
+    width: 100%;
+  }
+  .date{
+    padding-top: 5px;
+    color: #F15A23;
+  }
+  footer.tags {
+    i {
+      margin: 0 5px;
+    }
+    a {
+      display: inline;
+    }
+  }
+}
+  @media only screen and (max-width: 480px) {
+    .fruitful_description .text{font-size:20px !important;}
+  }
 
-@media only screen and (max-width: 480px) {
-	.fruitful_description .text{font-size:20px !important;}
-}
 
