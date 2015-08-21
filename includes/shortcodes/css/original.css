@@ -445,7 +445,8 @@ button.close {
 .shortcode_recent .post-content {
   width: 100%;
 }
-.shortcode_recent .blog_post .post-content .entry-content {
+.shortcode_recent .entry-content {
+  min-height: 150px;
   padding-top: 0;
 }
 .shortcode_recent .comments {
@@ -459,9 +460,6 @@ button.close {
   margin-right: 5px;
   vertical-align: middle;
   background: url("../../admin/tinymce/comments.png");
-}
-.shortcode_recent footer {
-  padding: 0 4%;
 }
 .shortcode_recent img {
   width: 100%;

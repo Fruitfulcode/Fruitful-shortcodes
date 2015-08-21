@@ -679,7 +679,7 @@ function fruitful_recent_posts_columns ( $atts, $content = null ) {
 
             $out .= '<div class="post-content">';
             if ( has_post_thumbnail() && ! post_password_required()) :
-                $out .= $the_post_thumbnail;
+                $out .= '<a href="'.$the_permalink.'" title="'.$title.'" >'.$the_post_thumbnail.'</a>';
             endif;
             $out .= '<div class="entry-content">';
             $out .= '<header>
