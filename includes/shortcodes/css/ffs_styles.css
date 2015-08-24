@@ -2259,7 +2259,7 @@ button.close {
   margin-bottom: 0;
 }
 .shortcode_recent .post-content {
-  width: 100%;
+  width: 100% !important;
 }
 .shortcode_recent .entry-content {
   min-height: 150px;

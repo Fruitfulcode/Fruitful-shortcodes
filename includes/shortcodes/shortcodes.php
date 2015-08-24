@@ -618,7 +618,7 @@ function fruitful_recent_posts_slider(){
 add_shortcode ("fruitful_recent_posts_slider", "fruitful_recent_posts_slider");
 
 function fruitful_recent_posts_columns ( $atts, $content = null ) {
-    $out = $count = $columns = $show_date = $show_comments = $show_tags = $show_description = "";
+    $out = $count = $columns = $show_date = $show_comments = $show_tags = $show_description = $show_all_categories ="";
     extract(shortcode_atts(array(
         'count'		 	 => 10,
         'columns' 	 	 => 2,
@@ -626,6 +626,7 @@ function fruitful_recent_posts_columns ( $atts, $content = null ) {
         'show_comments'	 => 1,
         'show_tags'=> 1,
         'show_description'=>0,
+        'show_all_categories'=>0,
     ), $atts));
 
     $class = "ffs-two-one";
@@ -717,13 +718,31 @@ function fruitful_recent_posts_columns ( $atts, $content = null ) {
                 // Remove the blank entry due to get_the_tag_list
                 $sortedtags = array_values( array_filter($sortedtags) );
                 $out .= '<footer class="tags">';
-                foreach ($sortedtags as $key=>$tagname) {
+                $key = 0;
+                foreach ($sortedtags as $tagname) {
+                    $key++;
                     $out .= $tagname;
-                    if ($key!=count($sortedtags)-1)
+                    if ($key!=count($sortedtags))
                         $out .= '<i> / </i>';
                 }
                 $out .= '</footer>';
             }
+
+        }
+        if ($show_all_categories){
+            $args = array(
+                'orderby'      => 'name',
+                'title_li'     => '',
+            );
+            $categories = get_categories($args);
+            $key = 0;
+            foreach ($categories as $key1=>$category){
+                    $key++;
+                    $out .=  '<a href="' . get_category_link( $category->term_id ) . '">'.$category->name.'</a>';
+                if ($key!=count($categories))
+                    $out .= '<i> / </i>';
+            }
+
 
         }
     }
