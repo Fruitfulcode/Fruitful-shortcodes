@@ -474,6 +474,10 @@ button.close {
 .shortcode_recent footer.tags a {
   display: inline;
 }
+.categories-list{
+  clear:both;
+  float:left;
+}
 @media only screen and (max-width: 480px) {
   .fruitful_description .text {
     font-size: 20px !important;
