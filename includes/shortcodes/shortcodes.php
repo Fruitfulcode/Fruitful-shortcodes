@@ -12,7 +12,7 @@
 	function fruitful_init_shortcodes_script() {
 		wp_enqueue_script('ffs-easyResponsiveTabs', FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/tabs/easyResponsiveTabs.js', array( 'jquery' ), '20142803', true );
 		wp_enqueue_script('ffs-script', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/fss_script.js', array( 'jquery' ), '20142803', true );
-		wp_enqueue_script('ffs-boostrap',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '20142803', true );
+		//wp_enqueue_script('ffs-boostrap',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '20142803', true );
 	}
 	
 	add_action( 'wp_enqueue_scripts', 'fruitful_init_shortcodes_style',  99 );
