@@ -3,8 +3,8 @@ Contributors: fruitfulcode
 Donate link: http://fruitfulcode.com
 Tags: admin, fruitful, shortcode, shortcodes, short code, editor, content, bootstrap, post, page, tab, tabs, horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button
 Requires at least: 3.4.1
-Tested up to: 4.1
-Stable tag: 1.3
+Tested up to: 4.4
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,7 @@ http://plugins.fruitfulcode.com/shortcodes/
 <li><a href="http://plugins.fruitfulcode.com/shortcodes/progress-bar/">Progress bar</a></li> 
 <li><a href="http://plugins.fruitfulcode.com/shortcodes/button/">Button</a></li> 
 <li><a href="http://plugins.fruitfulcode.com/shortcodes/alert/">Alert</a></li> 
+<li><a href="http://plugins.fruitfulcode.com/shortcodes/recent-posts/">Recent posts</a></li> 
 </ol>
 
 <h3>Technical support</h3>
@@ -77,6 +78,16 @@ You can check <a href="http://support.fruitfulcode.com/hc/en-us/sections/2004063
 11. Add button.
 
 == Changelog ==
+
+= 1.4 =
+Release Date: 21.12.2015
+
+* New features
+    * Recent posts shortcode  
+
+* Bugfixes
+	* Button color
+	* Bootstrap if exist
 
 = 1.3 =
 Release Date: 13.01.2015
