@@ -6,17 +6,39 @@
 		wp_enqueue_style( 'ffs-easyResponsiveTabs',	FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/tabs/easy-responsive-tabs.css');
 		wp_enqueue_style( 'ffs-fontawesome',		FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/css/font-awesome.min.css');
 		wp_enqueue_style( 'ffs-styles',  			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/css/ffs_styles.css');
-	 // wp_enqueue_style( 'ffs-boostrap',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/css/bootstrap.min.css');
+		if ( !fruitful_is_bootstrap_css_loaded() )
+			wp_enqueue_style( 'ffs-boostrap',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/css/bootstrap.min.css');
 	}
 	
 	function fruitful_init_shortcodes_script() {
 		wp_enqueue_script('ffs-easyResponsiveTabs', FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/tabs/easyResponsiveTabs.js', array( 'jquery' ), '20142803', true );
 		wp_enqueue_script('ffs-script', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/fss_script.js', array( 'jquery' ), '20142803', true );
-		wp_enqueue_script('ffs-boostrap',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '20142803', true );
+		if ( !fruitful_is_bootstrap_js_loaded() )
+			wp_enqueue_script('ffs-bootstrap',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '20142803', true );
 	}
 	
 	add_action( 'wp_enqueue_scripts', 'fruitful_init_shortcodes_style',  99 );
 	add_action( 'wp_enqueue_scripts', 'fruitful_init_shortcodes_script', 100 );	
+	
+	function fruitful_is_bootstrap_js_loaded() {
+		global $wp_scripts;
+		
+		foreach( $wp_scripts->queue as $script ) :
+			if ( preg_match('/\b(\w*bootstrap\w*)\b/', $script, $matches) ) return true;
+		endforeach;
+		
+		return false;
+	}
+	
+	function fruitful_is_bootstrap_css_loaded() {
+		global $wp_styles;
+		
+		foreach( $wp_styles->queue as $style ) :
+			if ( preg_match('/\b(\w*bootstrap\w*)\b/', $style, $matches) ) return true;
+		endforeach;
+		
+		return false;
+	}
 	
 function fruitful_description_box ($atts, $content = null) {
 	$out = '';
