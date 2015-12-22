@@ -306,7 +306,7 @@
                 title :  'Add recent posts slider',  
                 image : url+'/recent_news_slider.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[fruitful_recent_posts_slider posts="4" cat=""]');  
+                     ed.selection.setContent('[fruitful_recent_posts_slider posts="4" cat="" excerpt="0"]');  
                 }  
             });  
         },  

@@ -591,7 +591,8 @@ function fruitful_recent_posts($atts){
 
 		extract(shortcode_atts(array(
 									'posts'		 	=> 4,
-									'cat' 	 	=> ''
+									'cat' 	 	=> '',
+									'excerpt'	=> ''
 		), $atts));	
 		if(!empty($cat)) {
 			$cats = explode(", ", $cat);
@@ -632,7 +633,11 @@ function fruitful_recent_posts($atts){
 					$title = esc_attr( sprintf( __( 'Permalink to %s', 'fruitful' ), the_title_attribute( 'echo=0' ) ) );
 					$the_title = get_the_title();
 					$the_post_thumbnail = get_the_post_thumbnail();
+					if($excerpt == 0){
+					$the_excerpt = get_the_content();
+					} else {
 					$the_excerpt = get_the_excerpt();
+					}
 					$the_category = get_the_category_list( ', ', 'fruitful' );
 					$comments =	get_comments_popup_link( __( 'Leave a comment', 'fruitful' ), __( '1 Comment', 'fruitful' ), __( '% Comments', 'fruitful' ) );				
 		
@@ -690,7 +695,8 @@ function fruitful_recent_posts_slider($atts){
 		
 		extract(shortcode_atts(array(
 									'posts'		 	=> 4,
-									'cat' 	 	=> ''
+									'cat' 	 	=> '',
+									'excerpt'	=> ''
 		), $atts));	
 		if(!empty($cat)) {
 			$cats = explode(", ", $cat);
@@ -722,8 +728,7 @@ function fruitful_recent_posts_slider($atts){
 		$my_query = new WP_Query($args);
 		if( $my_query->have_posts() ) {
 		$out1 = "";
-		$out1 .= '<h2>Chosen posts</h2>		
-		<div class="flexslider">
+		$out1 .= '<div class="flexslider">
 		<ul class="slides">';
 		while ($my_query->have_posts()) : $my_query->the_post(); 
 				$day 		 = get_the_date('d'); 
@@ -734,7 +739,11 @@ function fruitful_recent_posts_slider($atts){
 				$title = esc_attr( sprintf( __( 'Permalink to %s', 'fruitful' ), the_title_attribute( 'echo=0' ) ) );
 				$the_title = get_the_title();
 				$the_post_thumbnail = get_the_post_thumbnail();
+				if($excerpt == 0){
+				$the_excerpt = get_the_content();
+				} else {
 				$the_excerpt = get_the_excerpt();
+				}
 				$the_category = get_the_category_list( ', ', 'fruitful' );
 				$comments =	get_comments_popup_link( __( 'Leave a comment', 'fruitful' ), __( '1 Comment', 'fruitful' ), __( '% Comments', 'fruitful' ) );	
 		
