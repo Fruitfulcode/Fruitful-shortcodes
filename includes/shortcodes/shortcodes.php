@@ -6,8 +6,8 @@
 		wp_enqueue_style( 'ffs-easyResponsiveTabs',	FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/tabs/easy-responsive-tabs.css');
 		wp_enqueue_style( 'ffs-fontawesome',		FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/css/font-awesome.min.css');
 		wp_enqueue_style( 'ffs-styles',  			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/css/ffs_styles.css');
-		if ( !fruitful_is_bootstrap_css_loaded() )
-			wp_enqueue_style( 'ffs-boostrap',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/css/bootstrap.min.css');
+		//if ( !fruitful_is_bootstrap_css_loaded() )
+			//wp_enqueue_style( 'ffs-boostrap',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/bootstrap/css/bootstrap.min.css');
 	}
 	
 	function fruitful_init_shortcodes_script() {
