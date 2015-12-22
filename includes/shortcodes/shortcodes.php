@@ -597,7 +597,7 @@ function fruitful_recent_posts($atts){
 		if(!empty($cat)) {
 			$cats = explode(", ", $cat);
 			$args = array(
-				'orderby'    	=> 'modified',
+				'orderby'    	=> 'date',
 				'order'			=> 'DESC',
 				'post_type'   	=> 'post',
 				'post_status'   => 'publish',
@@ -613,7 +613,7 @@ function fruitful_recent_posts($atts){
 			);
 		} else {
 			$args = array(
-				'orderby'    	=> 'modified',
+				'orderby'    	=> 'date',
 				'order'			=> 'DESC',
 				'post_type'   	=> 'post',
 				'post_status'   => 'publish',
@@ -701,7 +701,7 @@ function fruitful_recent_posts_slider($atts){
 		if(!empty($cat)) {
 			$cats = explode(", ", $cat);
 			$args = array(
-				'orderby'    	=> 'modified',
+				'orderby'    	=> 'date',
 				'order'			=> 'DESC',
 				'post_type'   	=> 'post',
 				'post_status'   => 'publish',
@@ -717,7 +717,7 @@ function fruitful_recent_posts_slider($atts){
 			);
 		} else {
 			$args = array(
-				'orderby'    	=> 'modified',
+				'orderby'    	=> 'date',
 				'order'			=> 'DESC',
 				'post_type'   	=> 'post',
 				'post_status'   => 'publish',
