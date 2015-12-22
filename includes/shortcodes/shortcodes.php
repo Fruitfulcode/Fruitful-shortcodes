@@ -500,6 +500,93 @@ function fruitful_sh_esc_link($link){
 	return $link;
 }
 
+function get_comments_popup_link( $zero = false, $one = false, $more = false, $css_class = '', $none = false ) {
+	global $wpcommentspopupfile, $wpcommentsjavascript;
+
+	$id = get_the_ID();
+	$title = get_the_title();
+	$number = get_comments_number( $id );
+
+	if ( false === $zero ) {
+		/* translators: %s: post title */
+		$zero = sprintf( __( 'No Comments<span class="screen-reader-text"> on %s</span>' ), $title );
+	}
+
+	if ( false === $one ) {
+		/* translators: %s: post title */
+		$one = sprintf( __( '1 Comment<span class="screen-reader-text"> on %s</span>' ), $title );
+	}
+
+	if ( false === $more ) {
+		/* translators: 1: Number of comments 2: post title */
+		$more = _n( '%1$s Comment<span class="screen-reader-text"> on %2$s</span>', '%1$s Comments<span class="screen-reader-text"> on %2$s</span>', $number );
+		$more = sprintf( $more, number_format_i18n( $number ), $title );
+	}
+
+	if ( false === $none ) {
+		/* translators: %s: post title */
+		$none = sprintf( __( 'Comments Off<span class="screen-reader-text"> on %s</span>' ), $title );
+	}
+	
+	$out = '';
+
+	if ( 0 == $number && !comments_open() && !pings_open() ) {
+		$out .= '<span' . ((!empty($css_class)) ? ' class="' . esc_attr( $css_class ) . '"' : '') . '>' . $none . '</span>';
+		return;
+	}
+
+	if ( post_password_required() ) {
+		_e( 'Enter your password to view comments.' );
+		return;
+	}
+
+	$out .= '<a href="';
+	if ( $wpcommentsjavascript ) {
+		if ( empty( $wpcommentspopupfile ) )
+			$home = home_url();
+		else
+			$home = get_option('siteurl');
+		$out .= $home . '/' . $wpcommentspopupfile . '?comments_popup=' . $id;
+		$out .= '" onclick="wpopen(this.href); return false"';
+	} else {
+		// if comments_popup_script() is not in the template, display simple comment link
+		if ( 0 == $number ) {
+			$respond_link = get_permalink() . '#respond';
+			/**
+			 * Filter the respond link when a post has no comments.
+			 *
+			 * @since 4.4.0
+			 *
+			 * @param string $respond_link The default response link.
+			 * @param integer $id The post ID.
+			 */
+			$out .= apply_filters( 'respond_link', $respond_link, $id );
+		} else {
+			$out .= get_comments_link();
+		}
+		$out .= '"';
+	}
+
+	if ( !empty( $css_class ) ) {
+		$out .= ' class="'.$css_class.'" ';
+	}
+	
+	$attributes = '';
+	/**
+	 * Filter the comments popup link attributes for display.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $attributes The comments popup link attributes. Default empty.
+	 */
+	echo apply_filters( 'comments_popup_link_attributes', $attributes );
+
+	$out .= '>';
+	$out .= get_comments_number_text( $zero, $one, $more );
+	$out .= '</a>';
+	return $out;
+}
+
 function fruitful_recent_posts($atts){
 
 		extract(shortcode_atts(array(
@@ -547,7 +634,7 @@ function fruitful_recent_posts($atts){
 					$the_post_thumbnail = get_the_post_thumbnail();
 					$the_excerpt = get_the_excerpt();
 					$the_category = get_the_category_list( ', ', 'fruitful' );
-					$tags_list = get_the_tag_list( '', __( ', ', 'fruitful' ) );
+					$comments =	get_comments_popup_link( __( 'Leave a comment', 'fruitful' ), __( '1 Comment', 'fruitful' ), __( '% Comments', 'fruitful' ) );				
 		
 					$out1 .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
 		
@@ -578,9 +665,9 @@ function fruitful_recent_posts($atts){
 							<span class="cat-links">
 							Posted in '.$the_category.'
 							</span>
-							<span class="tag-links">
-							'.$tags_list.'
-						</span> ';
+							<span class="comments-link">
+							'.$comments.'
+							</span> ';
 						$out1 .= '</footer>
 						</div>
 					</article>';
@@ -605,22 +692,33 @@ function fruitful_recent_posts_slider($atts){
 									'posts'		 	=> 4,
 									'cat' 	 	=> ''
 		), $atts));	
-		$cats = explode(", ", $cat);
-		$args = array(
-			'orderby'    	=> 'modified',
-			'order'			=> 'DESC',
-			'post_type'   	=> 'post',
-			'post_status'   => 'publish',
-			'ignore_sticky_posts' => true,
-			'posts_per_page'=> $posts,
-			'tax_query' => array(
-				array(				
-					'taxonomy' => 'category',
-					'field' => 'slug',
-					'terms' => $cats 
+		if(!empty($cat)) {
+			$cats = explode(", ", $cat);
+			$args = array(
+				'orderby'    	=> 'modified',
+				'order'			=> 'DESC',
+				'post_type'   	=> 'post',
+				'post_status'   => 'publish',
+				'ignore_sticky_posts' => true,
+				'posts_per_page'=> $posts,
+				'tax_query' => array(
+					array(				
+						'taxonomy' => 'category',
+						'field' => 'slug',
+						'terms' => $cats 
+					)
 				)
-			)
-		);
+			);
+		} else {
+			$args = array(
+				'orderby'    	=> 'modified',
+				'order'			=> 'DESC',
+				'post_type'   	=> 'post',
+				'post_status'   => 'publish',
+				'ignore_sticky_posts' => true,
+				'posts_per_page'=> $posts
+			);
+		}
 		$my_query = new WP_Query($args);
 		if( $my_query->have_posts() ) {
 		$out1 = "";
@@ -638,7 +736,7 @@ function fruitful_recent_posts_slider($atts){
 				$the_post_thumbnail = get_the_post_thumbnail();
 				$the_excerpt = get_the_excerpt();
 				$the_category = get_the_category_list( ', ', 'fruitful' );
-				$tags_list = get_the_tag_list( '', __( ', ', 'fruitful' ) );
+				$comments =	get_comments_popup_link( __( 'Leave a comment', 'fruitful' ), __( '1 Comment', 'fruitful' ), __( '% Comments', 'fruitful' ) );	
 		
 		$out1 .= '<li>';
 		$out1 .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
@@ -670,8 +768,8 @@ function fruitful_recent_posts_slider($atts){
 			<span class="cat-links">
 			Posted in '.$the_category.'
 			</span>
-			<span class="tag-links">
-			'.$tags_list.'
+			<span class="comments-link">
+			'.$comments.'
 		</span> ';
 		$out1 .= '</footer>
 		</div>
