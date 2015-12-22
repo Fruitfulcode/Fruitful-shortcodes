@@ -506,22 +506,33 @@ function fruitful_recent_posts($atts){
 									'posts'		 	=> 4,
 									'cat' 	 	=> ''
 		), $atts));	
-		$cats = explode(", ", $cat);
-		$args = array(
-			'orderby'    	=> 'modified',
-			'order'			=> 'DESC',
-			'post_type'   	=> 'post',
-			'post_status'   => 'publish',
-			'ignore_sticky_posts' => true,
-			'posts_per_page'=> $posts,
-			'tax_query' => array(
-				array(				
-					'taxonomy' => 'category',
-					'field' => 'slug',
-					'terms' => $cats 
+		if(!empty($cat)) {
+			$cats = explode(", ", $cat);
+			$args = array(
+				'orderby'    	=> 'modified',
+				'order'			=> 'DESC',
+				'post_type'   	=> 'post',
+				'post_status'   => 'publish',
+				'ignore_sticky_posts' => true,
+				'posts_per_page'=> $posts,
+				'tax_query' => array(
+					array(				
+						'taxonomy' => 'category',
+						'field' => 'slug',
+						'terms' => $cats 
+					)
 				)
-			)
-		);
+			);
+		} else {
+			$args = array(
+				'orderby'    	=> 'modified',
+				'order'			=> 'DESC',
+				'post_type'   	=> 'post',
+				'post_status'   => 'publish',
+				'ignore_sticky_posts' => true,
+				'posts_per_page'=> $posts
+			);
+		}
 		$my_query = new WP_Query($args);
 			if( $my_query->have_posts() ) {
 			$out1 = "";
