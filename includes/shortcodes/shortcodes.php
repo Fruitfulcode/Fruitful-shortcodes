@@ -169,6 +169,8 @@ function fruitful_info_box ($atts, $content = null) {
 } 
 add_shortcode ("fruitful_ibox", "fruitful_info_box");
 
+
+
 function fruitful_tabs_shortcode($atts, $content = null) {
 	$output	    = '';
 	$tab_titles = array();
@@ -182,8 +184,9 @@ function fruitful_tabs_shortcode($atts, $content = null) {
 		'tabcolor' 	=> '#71AFFF', 
 		'closed' 	=> 'true'
 	), $atts, 'fruitful_tabs'));
-	
-	$id 	= 'ffs-tabbed-' . rand( 1, 100 );
+	static $tab_id = 0;
+  	++$tab_id;
+	$id 	= 'ffs-tabbed-' . $tab_id;
 	$type 	= 'default';
 	$width 	= 'auto';
 	$fit	= 'false';
@@ -260,6 +263,14 @@ function fruitful_tab_shortcode ( $atts, $content = null ) {
 	return '<div class="fruitful_tab' . esc_attr( $class ) . '">' . do_shortcode( $content ) . '</div>';
 } 
 add_shortcode( 'fruitful_tab', 'fruitful_tab_shortcode', 99 );
+
+function fruitful_tab_link_shortcode ( $atts, $content = null ) {
+	extract(shortcode_atts( array( 
+		'item' => '1' 
+	), $atts));
+	return '<a href="#" onclick = "js_link_to_tab(this, ' . $item . ')">' . do_shortcode( $content ) . '</a>';
+} 
+add_shortcode( 'fruitful_tab_link', 'fruitful_tab_link_shortcode', 100 );
 
 function fruitful_sep ($atts, $content = null) {
 	$out = $height = $style = '';
