@@ -630,12 +630,15 @@ function fruitful_recent_posts($atts){
 			);
 		}
 		$out1 = "";
+		$out1 .= '<div class="recent-posts blog-grid blog">';
 		$my_query = new WP_Query($args);
 			if( $my_query->have_posts() ) {
 				while ($my_query->have_posts()) : $my_query->the_post(); 
+					
 					$out1 .= fruitful_load_template_part();
 				endwhile;
 			}
+			$out1 .= '</div>';
 			if(isset($out1)) return $out1;
 		wp_reset_query();
 }
@@ -646,8 +649,8 @@ add_shortcode ("fruitful_recent_posts", "fruitful_recent_posts");
 
 function fruitful_recent_posts_slider($atts){
 		//Add FlexSlider
-		wp_enqueue_style( 'flex-slider', 			get_template_directory_uri() . '/js/flex_slider/slider.css');
-		wp_enqueue_script('flex-fitvid-j',			get_template_directory_uri() . '/js/flex_slider/jquery.flexslider-min.js', array( 'jquery' ), '20130930', false );
+		wp_enqueue_style( 'flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/flex_slider/slider.css');
+		wp_enqueue_script('flex-fitvid-j',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/flex_slider/jquery.flexslider-min.js', array( 'jquery' ), '20130930', false );
 		wp_enqueue_script('flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/slider_init.js', array( 'jquery' ));
 		
 		extract(shortcode_atts(array(
@@ -685,7 +688,7 @@ function fruitful_recent_posts_slider($atts){
 		$my_query = new WP_Query($args);
 		if( $my_query->have_posts() ) {
 		$out1 = "";
-		$out1 .= '<div class="flexslider">
+		$out1 .= '<div class="flexslider blog-grid blog">
 		<ul class="slides">';
 			while ($my_query->have_posts()) : $my_query->the_post();
 				$out1 .= '<li>';
