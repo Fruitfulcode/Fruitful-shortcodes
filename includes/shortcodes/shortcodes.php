@@ -589,14 +589,45 @@ function get_comments_popup_link( $zero = false, $one = false, $more = false, $c
 
 function fruitful_load_template_part() {  
 	ob_start();  
-	get_template_part( 'content' );  
+	get_template_part( 'content', get_post_format() );
 	$var = ob_get_contents();  
 	ob_end_clean();  
 	return $var;  
 }
+function fruitful_load_simple_content() {  
+	$out1 = "";
+	$the_ID = get_the_ID();
+	$post_class = get_post_class();
+	$the_permalink = get_the_permalink();
+	$the_title = get_the_title();
+	$the_post_thumbnail = get_the_post_thumbnail();
+	$the_excerpt = get_the_excerpt();		
+
+		$out1 .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
+
+			$out1 .= '<div class="post-content">';	
+				if ( has_post_thumbnail() ) :
+				$out1 .='<div class="post-thumbnail">'
+					.$the_post_thumbnail.
+				'</div>';
+				endif;
+			$out1 .= '<header class="entry-header">
+				<h2 class="post-title entry-title">
+					<a href="'.$the_permalink.'" title="'.$the_title.'" rel="bookmark">'.$the_title.'</a>
+				</h2>
+			</header><!-- .entry-header -->';
+
+			$out1 .= '<div class="entry-content">';
+				$out1 .= $the_excerpt.'</div><!-- .entry-content -->';
+				$out1 .= '</div>
+			</article>';
+		$out1 .= '<div class="clearfix"></div>';
+	return $out1;
+}
 
 function fruitful_recent_posts($atts){
-
+	
+		$posts = $cat = $excerpt ='';
 		extract(shortcode_atts(array(
 									'posts'		 	=> 4,
 									'cat' 	 	=> '',
@@ -633,9 +664,13 @@ function fruitful_recent_posts($atts){
 		$out1 .= '<div class="recent-posts blog-grid blog">';
 		$my_query = new WP_Query($args);
 			if( $my_query->have_posts() ) {
-				while ($my_query->have_posts()) : $my_query->the_post(); 
-					
-					$out1 .= fruitful_load_template_part();
+				while ($my_query->have_posts()) : $my_query->the_post();
+					if ($excerpt == 1){
+						$content = fruitful_load_simple_content();
+					} else {
+						$content = fruitful_load_template_part();
+					}				
+					$out1 .= $content;
 				endwhile;
 			}
 			$out1 .= '</div>';
@@ -652,6 +687,8 @@ function fruitful_recent_posts_slider($atts){
 		wp_enqueue_style( 'flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/flex_slider/slider.css');
 		wp_enqueue_script('flex-fitvid-j',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/flex_slider/jquery.flexslider-min.js', array( 'jquery' ), '20130930', false );
 		wp_enqueue_script('flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/slider_init.js', array( 'jquery' ));
+		
+		$posts = $cat = $excerpt ='';
 		
 		extract(shortcode_atts(array(
 									'posts'		 	=> 4,
@@ -691,8 +728,13 @@ function fruitful_recent_posts_slider($atts){
 		$out1 .= '<div class="flexslider blog-grid blog">
 		<ul class="slides">';
 			while ($my_query->have_posts()) : $my_query->the_post();
+					if ($excerpt == 1){
+						$content = fruitful_load_simple_content();
+					} else {
+						$content = fruitful_load_template_part();
+					}
 				$out1 .= '<li>';
-				$out1 .= fruitful_load_template_part();
+				$out1 .= $content;
 				$out1 .= '</li>';
 			endwhile;
 		$out1 .= '</ul>';
