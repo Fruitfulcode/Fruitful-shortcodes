@@ -320,19 +320,14 @@ add_shortcode ("fruitful_alert", "fruitful_alert_shortcode");
 function fruitful_pbar_shortcode ($atts, $content = null) {
 	$out = $type = $class = '';
 	extract(shortcode_atts(array(
-		  'id'		 => 'ffs-pbar-' . rand( 1, 250 ),
-		  'stripped' => false
+		  'id' => 'ffs-pbar-' . rand( 1, 250 )
      ), $atts));
 	
 	$array_class = array();
 	$array_class[]  = 'progress';
 	
 	if (!empty($id)) 
-		$id = sanitize_html_class($id); 
-	if (!empty($stripped) && $stripped)  
-		$array_class[]  = 'progress-bar-striped';
-	if (!empty($active) && $active) 	 
-		$array_class[]  = 'active';
+	$id = sanitize_html_class($id); 
 	
 	$out .= '<div id="'.$id.'" class="'.implode(' ', $array_class).'">';
 		$out .= fruitful_sh_esc_content_pbr(do_shortcode($content));
@@ -351,6 +346,7 @@ add_shortcode ("fruitful_pbar", "fruitful_pbar_shortcode");
 */
 function fruitful_bar_shortcode ( $atts, $content = null ) {
 	$type = $width = '';
+	
 	extract(shortcode_atts(array(
 						'type'		=> '',
 						'active'    => false,
@@ -359,17 +355,19 @@ function fruitful_bar_shortcode ( $atts, $content = null ) {
 							
 	), $atts));
 	
-	$array_class = array();
+	$stripped = filter_var($stripped, FILTER_VALIDATE_BOOLEAN);
+	$active   = filter_var($active, FILTER_VALIDATE_BOOLEAN);
+
+	
+	$array_class   = array();
 	$array_class[] = 'progress-bar';
 	
 	if (!empty($type)) 		
 		$array_class[] = sanitize_html_class($type);
-	if (!empty($active) && $active)
-		$array_class[] = 'active'; 
+	if ($active) $array_class[] = 'active'; 
 	if (!empty($width)) 	
 		$width = esc_attr($width);
-	if (!empty($stripped) && $stripped)
-		$array_class[]  = 'progress-bar-striped';	
+	if ($stripped) $array_class[]  = 'progress-bar-striped';	
 	 
 	return '<div class="'.implode(' ', $array_class).'" style="width: '.$width.';"></div>';
 } 
@@ -594,6 +592,7 @@ function fruitful_load_template_part() {
 	ob_end_clean();  
 	return $var;  
 }
+
 function fruitful_load_simple_content() {  
 	$out1 = "";
 	$the_ID = get_the_ID();
@@ -629,7 +628,7 @@ function fruitful_recent_posts($atts){
 	
 		$posts = $cat = $excerpt ='';
 		extract(shortcode_atts(array(
-									'posts'		 	=> 4,
+									'posts'	 	=> 4,
 									'cat' 	 	=> '',
 									'excerpt'	=> ''
 		), $atts));	
