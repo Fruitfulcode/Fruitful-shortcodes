@@ -596,12 +596,14 @@ function fruitful_load_template_part() {
 }
 
 function fruitful_recent_posts($atts){
-	
+		GLOBAL $WP_Query;
 		$posts = $cat = '';
+		$this_id = get_the_ID();
 		extract(shortcode_atts(array(
 									'posts'		 	=> 4,
 									'cat' 	 	=> ''
 		), $atts));	
+
 		if(!empty($cat)) {
 			$cats = explode(", ", $cat);
 			$args = array(
@@ -609,6 +611,7 @@ function fruitful_recent_posts($atts){
 				'order'			=> 'DESC',
 				'post_type'   	=> 'post',
 				'post_status'   => 'publish',
+				'post__not_in'	=> array($this_id),
 				'ignore_sticky_posts' => true,
 				'posts_per_page'=> $posts,
 				'tax_query' => array(
@@ -625,25 +628,22 @@ function fruitful_recent_posts($atts){
 				'order'			=> 'DESC',
 				'post_type'   	=> 'post',
 				'post_status'   => 'publish',
+				'post__not_in'	=> array($this_id),
 				'ignore_sticky_posts' => true,
 				'posts_per_page'=> $posts
 			);
 		}
-		$out1 = "";
-		if( !is_single() ) {
-		$out1 .= '<div class="recent-posts blog-grid blog">';
+		$out = "";
+		$out .= '<div class="recent-posts blog-grid blog">';
 		$my_query = new WP_Query($args);
 			if( $my_query->have_posts() ) {
 				while ($my_query->have_posts()) : $my_query->the_post();
 					$content = fruitful_load_template_part();		
-					$out1 .= $content;
+					$out .= $content;
 				endwhile;
 			}
-			$out1 .= '</div>';
-		} else {
-			$out1 .= '<h3 style="color:#ff0000"> Sorry, you can not use this shortcode in single post</h3>';
-		}
-			if(isset($out1)) return $out1;
+			$out .= '</div>';
+			if(isset($out)) return $out;
 		wp_reset_query();
 }
 
@@ -658,6 +658,7 @@ function fruitful_recent_posts_slider($atts){
 		wp_enqueue_script('flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/slider_init.js', array( 'jquery' ));
 		
 		$posts = $cat = '';
+		$this_id = get_the_ID();
 		
 		extract(shortcode_atts(array(
 									'posts'		 	=> 4,
@@ -670,6 +671,7 @@ function fruitful_recent_posts_slider($atts){
 				'order'			=> 'DESC',
 				'post_type'   	=> 'post',
 				'post_status'   => 'publish',
+				'post__not_in'	=> array($this_id),
 				'ignore_sticky_posts' => true,
 				'posts_per_page'=> $posts,
 				'tax_query' => array(
@@ -686,32 +688,29 @@ function fruitful_recent_posts_slider($atts){
 				'order'			=> 'DESC',
 				'post_type'   	=> 'post',
 				'post_status'   => 'publish',
+				'post__not_in'	=> array($this_id),
 				'ignore_sticky_posts' => true,
 				'posts_per_page'=> $posts
 			);
 		}
-		$out1 = "";
-		if( !is_single() ) {		
-			$my_query = new WP_Query($args);
-			if( $my_query->have_posts() ) {
-			$out1 .= '<div class="flexslider blog-grid blog">
+		$out = "";	
+		$my_query = new WP_Query($args);
+		if( $my_query->have_posts() ) {
+			$out .= '<div class="flexslider blog-grid blog">
 			<ul class="slides">';
 				while ($my_query->have_posts()) : $my_query->the_post();
 						
 						$content = fruitful_load_template_part();
-					$out1 .= '<li>';
-					$out1 .= $content;
-					$out1 .= '</li>';
+					$out .= '<li>';
+					$out .= $content;
+					$out .= '</li>';
 				endwhile;
-			$out1 .= '</ul>';
-			$out1 .= '</div>';
-			$out1 .= '<div class="clearfix"></div>';
-			}
+			$out .= '</ul>';
+			$out .= '</div>';
+			$out .= '<div class="clearfix"></div>';
 		}
-		else {
-			$out1 .= '<h3 style="color:#ff0000"> Sorry, you can not use this shortcode in single post</h3>';
-		}
-		return $out1;
+
+		return $out;
     wp_reset_query();
 }
 
