@@ -242,7 +242,7 @@
                 title :  'Add progress bar',  
                 image : url+'/progressbar.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[fruitful_pbar stripped="false"][fruitful_bar type="progress-bar-success" width="60%" stripped="false" active="false"][/fruitful_bar][/fruitful_pbar]');  
+                     ed.selection.setContent('[fruitful_pbar][fruitful_bar type="progress-bar-success" width="60%" stripped="false" active="false"][/fruitful_bar][/fruitful_pbar]');  
                 }  
             });  
         },  
