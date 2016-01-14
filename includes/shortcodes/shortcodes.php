@@ -320,14 +320,19 @@ add_shortcode ("fruitful_alert", "fruitful_alert_shortcode");
 function fruitful_pbar_shortcode ($atts, $content = null) {
 	$out = $type = $class = '';
 	extract(shortcode_atts(array(
-		  'id' => 'ffs-pbar-' . rand( 1, 250 )
+		  'id'		 => 'ffs-pbar-' . rand( 1, 250 ),
+		  'stripped' => false
      ), $atts));
 	
 	$array_class = array();
 	$array_class[]  = 'progress';
 	
 	if (!empty($id)) 
-	$id = sanitize_html_class($id); 
+		$id = sanitize_html_class($id); 
+	if (!empty($stripped) && $stripped)  
+		$array_class[]  = 'progress-bar-striped';
+	if (!empty($active) && $active) 	 
+		$array_class[]  = 'active';
 	
 	$out .= '<div id="'.$id.'" class="'.implode(' ', $array_class).'">';
 		$out .= fruitful_sh_esc_content_pbr(do_shortcode($content));
@@ -346,7 +351,6 @@ add_shortcode ("fruitful_pbar", "fruitful_pbar_shortcode");
 */
 function fruitful_bar_shortcode ( $atts, $content = null ) {
 	$type = $width = '';
-	
 	extract(shortcode_atts(array(
 						'type'		=> '',
 						'active'    => false,
@@ -355,19 +359,17 @@ function fruitful_bar_shortcode ( $atts, $content = null ) {
 							
 	), $atts));
 	
-	$stripped = filter_var($stripped, FILTER_VALIDATE_BOOLEAN);
-	$active   = filter_var($active, FILTER_VALIDATE_BOOLEAN);
-
-	
-	$array_class   = array();
+	$array_class = array();
 	$array_class[] = 'progress-bar';
 	
 	if (!empty($type)) 		
 		$array_class[] = sanitize_html_class($type);
-	if ($active) $array_class[] = 'active'; 
+	if (!empty($active) && $active)
+		$array_class[] = 'active'; 
 	if (!empty($width)) 	
 		$width = esc_attr($width);
-	if ($stripped) $array_class[]  = 'progress-bar-striped';	
+	if (!empty($stripped) && $stripped)
+		$array_class[]  = 'progress-bar-striped';	
 	 
 	return '<div class="'.implode(' ', $array_class).'" style="width: '.$width.';"></div>';
 } 
@@ -593,44 +595,12 @@ function fruitful_load_template_part() {
 	return $var;  
 }
 
-function fruitful_load_simple_content() {  
-	$out1 = "";
-	$the_ID = get_the_ID();
-	$post_class = get_post_class();
-	$the_permalink = get_the_permalink();
-	$the_title = get_the_title();
-	$the_post_thumbnail = get_the_post_thumbnail();
-	$the_excerpt = get_the_excerpt();		
-
-		$out1 .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
-
-			$out1 .= '<div class="post-content">';	
-				if ( has_post_thumbnail() ) :
-				$out1 .='<div class="post-thumbnail">'
-					.$the_post_thumbnail.
-				'</div>';
-				endif;
-			$out1 .= '<header class="entry-header">
-				<h2 class="post-title entry-title">
-					<a href="'.$the_permalink.'" title="'.$the_title.'" rel="bookmark">'.$the_title.'</a>
-				</h2>
-			</header><!-- .entry-header -->';
-
-			$out1 .= '<div class="entry-content">';
-				$out1 .= $the_excerpt.'</div><!-- .entry-content -->';
-				$out1 .= '</div>
-			</article>';
-		$out1 .= '<div class="clearfix"></div>';
-	return $out1;
-}
-
 function fruitful_recent_posts($atts){
 	
-		$posts = $cat = $excerpt ='';
+		$posts = $cat = '';
 		extract(shortcode_atts(array(
-									'posts'	 	=> 4,
-									'cat' 	 	=> '',
-									'excerpt'	=> ''
+									'posts'		 	=> 4,
+									'cat' 	 	=> ''
 		), $atts));	
 		if(!empty($cat)) {
 			$cats = explode(", ", $cat);
@@ -660,19 +630,19 @@ function fruitful_recent_posts($atts){
 			);
 		}
 		$out1 = "";
+		if( !is_single() ) {
 		$out1 .= '<div class="recent-posts blog-grid blog">';
 		$my_query = new WP_Query($args);
 			if( $my_query->have_posts() ) {
 				while ($my_query->have_posts()) : $my_query->the_post();
-					if ($excerpt == 1){
-						$content = fruitful_load_simple_content();
-					} else {
-						$content = fruitful_load_template_part();
-					}				
+					$content = fruitful_load_template_part();		
 					$out1 .= $content;
 				endwhile;
 			}
 			$out1 .= '</div>';
+		} else {
+			$out1 .= '<h3 style="color:#ff0000"> Sorry, you can not use this shortcode in single post</h3>';
+		}
 			if(isset($out1)) return $out1;
 		wp_reset_query();
 }
@@ -687,12 +657,11 @@ function fruitful_recent_posts_slider($atts){
 		wp_enqueue_script('flex-fitvid-j',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/flex_slider/jquery.flexslider-min.js', array( 'jquery' ), '20130930', false );
 		wp_enqueue_script('flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/slider_init.js', array( 'jquery' ));
 		
-		$posts = $cat = $excerpt ='';
+		$posts = $cat = '';
 		
 		extract(shortcode_atts(array(
 									'posts'		 	=> 4,
-									'cat' 	 	=> '',
-									'excerpt'	=> ''
+									'cat' 	 	=> ''
 		), $atts));	
 		if(!empty($cat)) {
 			$cats = explode(", ", $cat);
@@ -720,26 +689,28 @@ function fruitful_recent_posts_slider($atts){
 				'ignore_sticky_posts' => true,
 				'posts_per_page'=> $posts
 			);
-		}  
-		$my_query = new WP_Query($args);
-		if( $my_query->have_posts() ) {
+		}
 		$out1 = "";
-		$out1 .= '<div class="flexslider blog-grid blog">
-		<ul class="slides">';
-			while ($my_query->have_posts()) : $my_query->the_post();
-					if ($excerpt == 1){
-						$content = fruitful_load_simple_content();
-					} else {
+		if( !is_single() ) {		
+			$my_query = new WP_Query($args);
+			if( $my_query->have_posts() ) {
+			$out1 .= '<div class="flexslider blog-grid blog">
+			<ul class="slides">';
+				while ($my_query->have_posts()) : $my_query->the_post();
+						
 						$content = fruitful_load_template_part();
-					}
-				$out1 .= '<li>';
-				$out1 .= $content;
-				$out1 .= '</li>';
-			endwhile;
-		$out1 .= '</ul>';
-		$out1 .= '</div>';
-		$out1 .= '<div class="clearfix"></div>';
-	}
+					$out1 .= '<li>';
+					$out1 .= $content;
+					$out1 .= '</li>';
+				endwhile;
+			$out1 .= '</ul>';
+			$out1 .= '</div>';
+			$out1 .= '<div class="clearfix"></div>';
+			}
+		}
+		else {
+			$out1 .= '<h3 style="color:#ff0000"> Sorry, you can not use this shortcode in single post</h3>';
+		}
 		return $out1;
     wp_reset_query();
 }
