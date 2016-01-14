@@ -285,7 +285,7 @@
                 title :  'Add recent posts',  
                 image : url+'/recent_news.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[fruitful_recent_posts posts="4" cat="" excerpt="0"]');  
+                     ed.selection.setContent('[fruitful_recent_posts posts="4" cat=""]');  
                 }  
             });  
         },  
@@ -306,7 +306,7 @@
                 title :  'Add recent posts slider',  
                 image : url+'/recent_news_slider.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[fruitful_recent_posts_slider posts="4" cat="" excerpt="0"]');  
+                     ed.selection.setContent('[fruitful_recent_posts_slider posts="4" cat=""]');  
                 }  
             });  
         },  
