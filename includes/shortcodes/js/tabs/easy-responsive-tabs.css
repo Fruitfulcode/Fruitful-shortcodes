@@ -1,4 +1,4 @@
-﻿.ffs-tabbed-nav {
+.ffs-tabbed-nav {
 	margin:10px 0 20px 0;
 }
 
@@ -78,7 +78,7 @@ h2.resp-tab-title:last-child {
 /*-----------Vertical tabs-----------*/
 .resp-vtabs ul.resp-tabs-list {
     float: left;
-    width: 30%;
+    width: 30%!important;
 }
 
 .resp-vtabs .resp-tabs-list li {
@@ -94,7 +94,7 @@ h2.resp-tab-title:last-child {
     background-color: #fff;
     border: 1px solid #c1c1c1;
     float: left;
-    width: 69.5%;
+    width: 69.5%!important;
     min-height: 250px;
     clear: none;
 }
@@ -180,7 +180,7 @@ h2.resp-accordion:first-child {
     .resp-vtabs .resp-tabs-container {
         border: none;
         float: none;
-        width: 100%;
+        width: 100%!important;
         min-height: initial;
         clear: none;
     }
