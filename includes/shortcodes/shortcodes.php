@@ -592,7 +592,7 @@ function fruitful_load_template_part() {
 }
 
 function fruitful_recent_posts($atts){
-		GLOBAL $WP_Query;
+		
 		$posts = $cat = '';
 		$this_id = get_the_ID();
 		extract(shortcode_atts(array(
@@ -632,15 +632,16 @@ function fruitful_recent_posts($atts){
 		$out = "";
 		$out .= '<div class="recent-posts blog-grid blog">';
 		$my_query = new WP_Query($args);
-			if( $my_query->have_posts() ) {
-				while ($my_query->have_posts()) : $my_query->the_post();
-					$content = fruitful_load_template_part();		
-					$out .= $content;
-				endwhile;
-			}
-			$out .= '</div>';
-			if(isset($out)) return $out;
-		wp_reset_query();
+		if( $my_query->have_posts() ) {
+			while ($my_query->have_posts()) : $my_query->the_post();
+				$content = fruitful_load_template_part();		
+				$out .= $content;
+			endwhile;
+		}
+		$out .= '</div>';
+			
+		wp_reset_postdata();
+		if(isset($out)) return $out;
 }
 
 add_shortcode ("fruitful_recent_posts", "fruitful_recent_posts");
@@ -706,8 +707,9 @@ function fruitful_recent_posts_slider($atts){
 			$out .= '<div class="clearfix"></div>';
 		}
 
-		return $out;
-    wp_reset_query();
+		
+    	wp_reset_postdata();
+    	return $out;
 }
 
 add_shortcode ("fruitful_recent_posts_slider", "fruitful_recent_posts_slider");
