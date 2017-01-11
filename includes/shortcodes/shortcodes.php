@@ -593,11 +593,11 @@ function fruitful_load_template_part() {
 
 function fruitful_recent_posts($atts){
 		
-		$posts = $cat = '';
+		$posts = $cat = $out = '';
 		$this_id = get_the_ID();
 		extract(shortcode_atts(array(
-									'posts'		 	=> 4,
-									'cat' 	 	=> ''
+			'posts'		 	=> 4,
+			'cat' 	 	=> ''
 		), $atts));	
 
 		if(!empty($cat)) {
@@ -629,13 +629,67 @@ function fruitful_recent_posts($atts){
 				'posts_per_page'=> $posts
 			);
 		}
-		$out = "";
+
 		$out .= '<div class="recent-posts blog-grid blog">';
 		$my_query = new WP_Query($args);
 		if( $my_query->have_posts() ) {
 			while ($my_query->have_posts()) : $my_query->the_post();
-				$content = fruitful_load_template_part();		
-				$out .= $content;
+				$content = fruitful_load_template_part();
+				if ( !empty( $content ) ) {
+					$out .= $content;
+				} else {
+					$day = get_the_date('d'); 
+					$month_abr = get_the_date('M');
+					$the_ID = get_the_ID();
+					$post_class = get_post_class();
+					$the_permalink = get_the_permalink();
+					$title = esc_attr( sprintf( __( 'Permalink to %s', 'fruitful' ), the_title_attribute( 'echo=0' ) ) );
+					$the_title = get_the_title();
+					$the_post_thumbnail = get_the_post_thumbnail();
+					if( empty(get_the_excerpt()) ) {
+						$the_excerpt = get_the_content();
+					} else {
+						$the_excerpt = get_the_excerpt();
+					}
+					$the_category = get_the_category_list( ', ', 'fruitful' );
+					$comments =	get_comments_popup_link( __( 'Leave a comment', 'fruitful' ), __( '1 Comment', 'fruitful' ), __( '% Comments', 'fruitful' ) );				
+		
+					$out .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
+		
+						$out .= '<a href="'.$the_permalink.'" rel="bookmark">
+							<div class="date_of_post updated">
+								<span class="day_post">'.$day.'</span>
+								<span class="month_post">'.$month_abr.'</span>
+							</div>
+						</a>';
+		
+						$out .= '<div class="post-content">	
+						<header class="post-header">
+							<h2 class="post-title entry-title">
+								<a href="'.$the_permalink.'" title="'.$title.'" rel="bookmark">'.$the_title.'</a>
+							</h2>
+						</header><!-- .entry-header -->';
+						$out .= '<div class="entry-content">';
+							if ( has_post_thumbnail() && ! post_password_required() ) :
+										$out .='<div class="entry-thumbnail">'
+											.$the_post_thumbnail.
+										'</div>';
+							endif;
+							$out .= $the_excerpt.
+						'</div><!-- .entry-content -->';
+						$out .= '<footer class="entry-meta">
+							<span class="author-link author"><a href="'.esc_url( get_author_posts_url( get_the_author_meta( 'ID' ))).'">'.get_the_author().'</a></span>
+							<span class="cat-links">
+							Posted in '.$the_category.'
+							</span>
+							<span class="comments-link">
+							'.$comments.'
+							</span> ';
+						$out .= '</footer>
+						</div>
+					</article>';
+					$out .= '<div class="clearfix"></div>';
+				}
 			endwhile;
 		}
 		$out .= '</div>';
@@ -649,67 +703,122 @@ add_shortcode ("fruitful_recent_posts", "fruitful_recent_posts");
 
 
 function fruitful_recent_posts_slider($atts){
-		//Add FlexSlider
-		wp_enqueue_style( 'flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/flex_slider/slider.css');
-		wp_enqueue_script('flex-fitvid-j',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/flex_slider/jquery.flexslider-min.js', array( 'jquery' ), '20130930', false );
-		wp_enqueue_script('flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/slider_init.js', array( 'jquery' ));
-		
-		$posts = $cat = '';
-		$this_id = get_the_ID();
-		
-		extract(shortcode_atts(array(
-									'posts'		 	=> 4,
-									'cat' 	 	=> ''
-		), $atts));	
-		if(!empty($cat)) {
-			$cats = explode(", ", $cat);
-			$args = array(
-				'orderby'    	=> 'date',
-				'order'			=> 'DESC',
-				'post_type'   	=> 'post',
-				'post_status'   => 'publish',
-				'post__not_in'	=> array($this_id),
-				'ignore_sticky_posts' => true,
-				'posts_per_page'=> $posts,
-				'tax_query' => array(
-					array(				
-						'taxonomy' => 'category',
-						'field' => 'slug',
-						'terms' => $cats 
-					)
-				)
-			);
-		} else {
-			$args = array(
-				'orderby'    	=> 'date',
-				'order'			=> 'DESC',
-				'post_type'   	=> 'post',
-				'post_status'   => 'publish',
-				'post__not_in'	=> array($this_id),
-				'ignore_sticky_posts' => true,
-				'posts_per_page'=> $posts
-			);
-		}
-		$out = "";	
-		$my_query = new WP_Query($args);
-		if( $my_query->have_posts() ) {
-			$out .= '<div class="flexslider blog-grid blog">
-			<ul class="slides">';
-				while ($my_query->have_posts()) : $my_query->the_post();
-						
-						$content = fruitful_load_template_part();
-					$out .= '<li>';
-					$out .= $content;
-					$out .= '</li>';
-				endwhile;
-			$out .= '</ul>';
-			$out .= '</div>';
-			$out .= '<div class="clearfix"></div>';
-		}
+	//Add FlexSlider
+	wp_enqueue_style( 'flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/flex_slider/slider.css');
+	wp_enqueue_script('flex-fitvid-j',			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/flex_slider/jquery.flexslider-min.js', array( 'jquery' ), '20130930', false );
+	wp_enqueue_script('flex-slider', 			FRUITFUL_SHORTCODE_URI . 'includes/shortcodes/js/slider_init.js', array( 'jquery' ));
+	
+	$posts = $cat = $out = '';
+	$this_id = get_the_ID();
+	
+	extract(shortcode_atts(array(
+		'posts'		 	=> 4,
+		'cat' 	 	=> ''
+	), $atts));	
 
-		
-    	wp_reset_postdata();
-    	return $out;
+	if(!empty($cat)) {
+		$cats = explode(", ", $cat);
+		$args = array(
+			'orderby'    	=> 'date',
+			'order'			=> 'DESC',
+			'post_type'   	=> 'post',
+			'post_status'   => 'publish',
+			'post__not_in'	=> array($this_id),
+			'ignore_sticky_posts' => true,
+			'posts_per_page'=> $posts,
+			'tax_query' => array(
+				array(				
+					'taxonomy' => 'category',
+					'field' => 'slug',
+					'terms' => $cats 
+				)
+			)
+		);
+	} else {
+		$args = array(
+			'orderby'    	=> 'date',
+			'order'			=> 'DESC',
+			'post_type'   	=> 'post',
+			'post_status'   => 'publish',
+			'post__not_in'	=> array($this_id),
+			'ignore_sticky_posts' => true,
+			'posts_per_page'=> $posts
+		);
+	}
+
+	$my_query = new WP_Query($args);
+
+	if( $my_query->have_posts() ) {
+
+		$out .= '<div class="flexslider blog-grid blog">
+					<ul class="slides">';
+			
+			while ($my_query->have_posts()) : $my_query->the_post();
+				$content = fruitful_load_template_part();
+				
+				$out .= '<li>';
+
+				if ( !empty( $content ) ) {
+					$out .= $content;
+				} else {
+
+					$day 		 = get_the_date('d'); 
+					$month_abr = get_the_date('M');
+					$the_ID = get_the_ID();
+					$post_class = get_post_class();
+					$the_permalink = get_the_permalink();
+					$title = esc_attr( sprintf( __( 'Permalink to %s', 'fruitful' ), the_title_attribute( 'echo=0' ) ) );
+					$the_title = get_the_title();
+					$the_post_thumbnail = get_the_post_thumbnail();
+					if( empty(get_the_excerpt()) ){
+						$the_excerpt = get_the_content();
+					} else {
+						$the_excerpt = get_the_excerpt();
+					}
+					$the_category = get_the_category_list( ', ', 'fruitful' );
+					$comments =	get_comments_popup_link( __( 'Leave a comment', 'fruitful' ), __( '1 Comment', 'fruitful' ), __( '% Comments', 'fruitful' ) );
+
+					$out .= '<article id="post-'.$the_ID.'" class="blog_post blog '.implode(' ', $post_class).'">';
+						$out .= '<a href="'.$the_permalink.'" rel="bookmark">
+									<div class="date_of_post updated">
+										<span class="day_post">'.$day.'</span>
+										<span class="month_post">'.$month_abr.'</span>
+									</div>
+								</a>';
+						$out .= '<div class="post-content">	
+									<header class="post-header">
+										<h2 class="post-title entry-title">
+											<a href="'.$the_permalink.'" title="'.$title.'" rel="bookmark">'.$the_title.'</a>
+										</h2>
+									</header><!-- .entry-header -->';
+						$out .= '<div class="entry-content">';
+							if ( has_post_thumbnail() && ! post_password_required() ) :
+								$out .='<div class="entry-thumbnail">'
+									.$the_post_thumbnail.
+								'</div>';
+							endif;
+						$out .= $the_excerpt.
+						'</div><!-- .entry-content -->';
+						$out .= '<footer class="entry-meta">
+							<span class="author-link author"><a href="'.esc_url( get_author_posts_url( get_the_author_meta( 'ID' ))).'">'.get_the_author().'</a></span>
+								<span class="cat-links">
+								Posted in '.$the_category.'
+								</span>
+								<span class="comments-link">
+								'.$comments.'
+							</span> ';
+						$out .= '</footer>
+							</div>
+					</article>';
+				$out .= '</li>';
+				}
+			endwhile;
+		$out .= '</ul>';
+		$out .= '</div>';
+		$out .= '<div class="clearfix"></div>';
+	}
+	wp_reset_postdata();
+	return $out;
 }
 
 add_shortcode ("fruitful_recent_posts_slider", "fruitful_recent_posts_slider");
