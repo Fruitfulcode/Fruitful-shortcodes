@@ -675,7 +675,7 @@ function fruitful_recent_posts($atts){
 											.$the_post_thumbnail.
 										'</div>';
 							endif;
-							$out .= $the_excerpt.
+							$out .= do_shortcode($the_excerpt).
 						'</div><!-- .entry-content -->';
 						$out .= '<footer class="entry-meta">
 							<span class="author-link author"><a href="'.esc_url( get_author_posts_url( get_the_author_meta( 'ID' ))).'">'.get_the_author().'</a></span>
@@ -797,7 +797,7 @@ function fruitful_recent_posts_slider($atts){
 									.$the_post_thumbnail.
 								'</div>';
 							endif;
-						$out .= $the_excerpt.
+						$out .= do_shortcode($the_excerpt).
 						'</div><!-- .entry-content -->';
 						$out .= '<footer class="entry-meta">
 							<span class="author-link author"><a href="'.esc_url( get_author_posts_url( get_the_author_meta( 'ID' ))).'">'.get_the_author().'</a></span>
