@@ -3,8 +3,8 @@ Contributors: fruitfulcode
 Donate link: http://fruitfulcode.com
 Tags: admin, fruitful, shortcode, shortcodes, short code, editor, content, bootstrap, post, page, tab, tabs, horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button, recent post, recent news
 Requires at least: 3.4.1
-Tested up to: 4.4.1
-Stable tag: 1.5
+Tested up to: 4.8
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,21 @@ You can check <a href="http://support.fruitfulcode.com/hc/en-us/sections/2004063
 
 == Changelog ==
 
+= 1.6 = 
+Release Date 11.07.2017
+
+* Added
+        * Shortcodes support for recent posts content   
+
+* Tested
+        * To WordPress 4.8
+	
+* Fixed
+        * Width tabs on tablets
+        * Slider height
+        * Recent posts and posts slider - fixed resetting post data issue
+        * Recent posts - added fallback for fruitful_load_template_part
+	
 = 1.5 = 
 Release Date 15.01.2016
 
