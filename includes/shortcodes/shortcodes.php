@@ -769,11 +769,11 @@ function fruitful_recent_posts_slider($atts){
 					$title = esc_attr( sprintf( __( 'Permalink to %s', 'fruitful' ), the_title_attribute( 'echo=0' ) ) );
 					$the_title = get_the_title();
 					$the_post_thumbnail = get_the_post_thumbnail();
-					if( empty(get_the_excerpt()) ){
+					$the_excerpt = get_the_excerpt();
+					if( empty($the_excerpt) ) {
 						$the_excerpt = get_the_content();
-					} else {
-						$the_excerpt = get_the_excerpt();
 					}
+					
 					$the_category = get_the_category_list( ', ', 'fruitful' );
 					$comments =	get_comments_popup_link( __( 'Leave a comment', 'fruitful' ), __( '1 Comment', 'fruitful' ), __( '% Comments', 'fruitful' ) );
 
