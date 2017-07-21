@@ -4,7 +4,7 @@ Donate link: http://fruitfulcode.com
 Tags: admin, fruitful, shortcode, shortcodes, short code, editor, content, bootstrap, post, page, tab, tabs, horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button, recent post, recent news
 Requires at least: 3.4.1
 Tested up to: 4.8
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,12 @@ You can check <a href="http://support.fruitfulcode.com/hc/en-us/sections/2004063
 11. Add button.
 
 == Changelog ==
+
+= 1.6.1 = 
+Release Date 21.07.2017
+
+* Fixed
+        * Old version php (5.5) support
 
 = 1.6 = 
 Release Date 11.07.2017
