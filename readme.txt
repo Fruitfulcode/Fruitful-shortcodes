@@ -12,29 +12,29 @@ Add additional content shortcodes: horizontal tabs, vertical tabs, accordion, pr
 
 == Description ==
 <h3>Demo Website</h3>
-http://plugins.fruitfulcode.com/shortcodes/
+https://plugins.fruitfulcode.com/shortcodes/
 <h3>Shortcodes</h3>
 <ol>
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/horizontal-tabs/">Horizontal tabs</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/vertical-tabs/">Vertical tabs</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/accordion/">Accordion</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/12-columns/">Columns 1/2</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/13-columns/">Columns 1/3</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/23-columns/">Columns 2/3</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/14-columns/">Columns 1/4</a></li>
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/34-columns/">Columns 3/4</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/15-columns/">Columns 1/5</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/separator/">Separator</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/promo-text/">Promo text</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/progress-bar/">Progress bar</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/button/">Button</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/alert/">Alert</a></li> 
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/recent-posts/">Recent posts</a></li>
-<li><a href="http://plugins.fruitfulcode.com/shortcodes/recent-posts-slider/">Recent posts slider</a></li>
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/horizontal-tabs/">Horizontal tabs</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/vertical-tabs/">Vertical tabs</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/accordion/">Accordion</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/12-columns/">Columns 1/2</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/13-columns/">Columns 1/3</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/23-columns/">Columns 2/3</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/14-columns/">Columns 1/4</a></li>
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/34-columns/">Columns 3/4</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/15-columns/">Columns 1/5</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/separator/">Separator</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/promo-text/">Promo text</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/progress-bar/">Progress bar</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/button/">Button</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/alert/">Alert</a></li> 
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/recent-posts/">Recent posts</a></li>
+<li><a href="https://plugins.fruitfulcode.com/shortcodes/recent-posts-slider/">Recent posts slider</a></li>
 </ol>
 
 <h3>Technical support</h3>
-If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to <a href="http://support.fruitfulcode.com/hc/en-us/requests/new">contact us</a> 
+If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to <a href="https://support.fruitfulcode.com/hc/en-us/requests/new">contact us</a> 
 
 <h3>How to thank a developers</h3>
 <ol>
@@ -52,7 +52,7 @@ If you have any questions or recommendations regarding the functionality of our 
 5. Edit post, page or other content type.
 6. Switch from text to visual edit your content via wysiwyg editor.
 7. Add shortcodes from additional bar.
-http://plugins.fruitfulcode.com/shortcodes/
+https://plugins.fruitfulcode.com/shortcodes/
 
 == Frequently Asked Questions ==
 
@@ -62,7 +62,7 @@ Please send request to our support, we will check the issues.
 
 = I haven’t found an answer to my question, what should I do? = 
 
-You can check <a href="http://support.fruitfulcode.com/hc/en-us/sections/200406396-Fruitful-shortcodes">support forum</a> or <a class="send-mail" target="_blank" href="mailto:mail@fruitfulcode.com?subject=Wordpress.org:%20Fruitful%20Shortcodes%20">send email to us</a>
+You can check <a href="https://support.fruitfulcode.com/hc/en-us/sections/200406396-Fruitful-shortcodes">support forum</a> or <a class="send-mail" target="_blank" href="mailto:mail@fruitfulcode.com?subject=Wordpress.org:%20Fruitful%20Shortcodes%20">send email to us</a>
 
 == Screenshots ==
 
