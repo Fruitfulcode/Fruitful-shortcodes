@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: fruitfulcode
-Donate link: http://fruitfulcode.com
+Donate link: https://fruitfulcode.com
 Tags: admin, fruitful, shortcode, shortcodes, short code, editor, content, bootstrap, post, page, tab, tabs, horizontal tabs, vertical tabs, accordion, promo text, columns, infobox, separator, alert, progress bar, button, recent post, recent news
 Requires at least: 3.4.1
 Tested up to: 4.8
@@ -12,25 +12,25 @@ Add additional content shortcodes: horizontal tabs, vertical tabs, accordion, pr
 
 == Description ==
 <h3>Demo Website</h3>
-https://plugins.fruitfulcode.com/shortcodes/
+https://shortcodes.fruitfulcode.com
 <h3>Shortcodes</h3>
 <ol>
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/horizontal-tabs"> Horizontal tabs</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/vertical-tabs"> Vertical tabs</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/accordion"> Accordion</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/12-columns"> Columns 1/2</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/13-columns"> Columns 1/3</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/23-columns"> Columns 2/3</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/14-columns"> Columns 1/4</a></li>
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/34-columns"> Columns 3/4</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/15-columns"> Columns 1/5</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/separator"> Separator</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/promo-text"> Promo text</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/progress-bar"> Progress bar</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/button"> Button</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/alert"> Alert</a></li> 
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/recent-posts"> Recent posts</a></li>
-<li><a href="https://plugins.fruitfulcode.com/shortcodes/recent-posts-slider"> Recent posts slider</a></li>
+<li><a href="https://shortcodes.fruitfulcode.com/horizontal-tabs"> Horizontal tabs</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/vertical-tabs"> Vertical tabs</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/accordion"> Accordion</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/12-columns"> Columns 1/2</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/13-columns"> Columns 1/3</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/23-columns"> Columns 2/3</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/14-columns"> Columns 1/4</a></li>
+<li><a href="https://shortcodes.fruitfulcode.com/34-columns"> Columns 3/4</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/15-columns"> Columns 1/5</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/separator"> Separator</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/promo-text"> Promo text</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/progress-bar"> Progress bar</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/button"> Button</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/alert"> Alert</a></li> 
+<li><a href="https://shortcodes.fruitfulcode.com/recent-posts"> Recent posts</a></li>
+<li><a href="https://shortcodes.fruitfulcode.com/recent-posts-slider"> Recent posts slider</a></li>
 </ol>
 
 <h3>Technical support</h3>
@@ -52,7 +52,7 @@ If you have any questions or recommendations regarding the functionality of our 
 5. Edit post, page or other content type.
 6. Switch from text to visual edit your content via wysiwyg editor.
 7. Add shortcodes from additional bar.
-https://plugins.fruitfulcode.com/shortcodes/
+https://shortcodes.fruitfulcode.com
 
 == Frequently Asked Questions ==
 
